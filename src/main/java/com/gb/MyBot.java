@@ -1,5 +1,6 @@
 package com.gb;
 
+import com.gb.util.Variables;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -10,6 +11,7 @@ public class MyBot extends ListenerAdapter {
 
     public MyBot() {
         commandHandler.registerCommand(new InsCalculator());
+        commandHandler.registerCommand(new RenameChannel());
     }
 
     public static void main(String[] args) {
@@ -31,7 +33,10 @@ public class MyBot extends ListenerAdapter {
 
         if (event.getMessage()
                 .getContentRaw()
-                .contains(Variables.COMMAND_PREFIX + "ic")
+                .contains(Variables.COMMAND_PREFIX + "ic") ||
+                event.getMessage()
+                        .getContentRaw()
+                        .contains(Variables.COMMAND_PREFIX + "rc")
         ) {
             commandHandler.handle(event);
         }

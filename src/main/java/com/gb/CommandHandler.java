@@ -1,5 +1,6 @@
 package com.gb;
 
+import com.gb.util.Variables;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.gb;
+package com.gb.util;
 
 public class Variables {
     public static final String TOKEN = "MTE2NzExOTkzNjIxNzQyODA1OA.GxWaIO.g5kC2qNv88z61_i3STJjoBURtU36sWTai_ny5k";
