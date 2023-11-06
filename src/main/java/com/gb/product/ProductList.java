@@ -1,4 +1,4 @@
-package com.gb;
+package com.gb.product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class ProductList {
         productList.add(new Product("Fire Relics", "fir", 10_000, "relic"));
         productList.add(new Product("Damage Relics", "dar", 8000, "relic"));
         productList.add(new Product("Leeching Relics", "ler", 6000, "relic"));
-        productList.add(new Product("Ice Relics", "icr", 6000, "relic"));
+        productList.add(new Product("Ice Relics", "icr", 7000, "relic"));
         productList.add(new Product("Experience Relics", "exr", 12_000, "relic"));
         productList.add(new Product("Cursed Relics", "cur", 4000, "relic"));
         productList.add(new Product("Efficiency Relics", "efr", 4000, "relic"));
@@ -60,8 +60,8 @@ public class ProductList {
         productList.add(new Product("Tablets", "tab", 10_000, "relic"));
 
         // Tailoring
-        productList.add(new Product("Books", "book", 4000, "tailoring"));
-        productList.add(new Product("Magical Essence", "mess", 1000, "tailoring"));
+        productList.add(new Product("Books", "book", 5000, "tailoring"));
+        productList.add(new Product("Magical Essence", "mess", 2000, "tailoring"));
 
         // Miscellaneous
         productList.add(new Product("Sandstone", "san", 10_000, "misc"));

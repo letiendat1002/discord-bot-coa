@@ -1,5 +1,7 @@
-package com.gb;
+package com.gb.command;
 
+import com.gb.command.Command;
+import com.gb.product.ProductList;
 import com.gb.util.CustomNumberFormat;
 import com.gb.util.Variables;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -34,35 +36,40 @@ public class InsCalculator implements Command {
         long cost;
         double commission;
 
+        var product = ProductList.getProductByCode(resourceCode);
+        if (product.isEmpty()) {
+            event.getChannel().sendMessage("Invalid resource code.")
+                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+            return;
+        } else {
+            resourceName = product.get().name();
+            unit = product.get().cost();
+        }
+
         try {
             amount = Math.abs(Integer.parseInt(payArgs[2]));
         } catch (NumberFormatException e) {
-            event.getChannel().sendMessage("Invalid quantity. Please provide a valid number.").queue();
+            event.getChannel().sendMessage("Invalid quantity. Please provide a valid number.")
+                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
             return;
         }
 
         try {
             cost = Math.abs(Long.parseLong(payArgs[3]));
         } catch (NumberFormatException e) {
-            event.getChannel().sendMessage("Invalid cost. Please provide a valid number.").queue();
+            event.getChannel().sendMessage("Invalid cost. Please provide a valid number.")
+                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
             return;
         }
 
         try {
             commission = Math.abs(Double.parseDouble(payArgs[4]));
         } catch (NumberFormatException e) {
-            event.getChannel().sendMessage("Invalid commission. Please provide a valid number.").queue();
+            event.getChannel().sendMessage("Invalid commission. Please provide a valid number.")
+                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
             return;
         }
 
-        var product = ProductList.getProductByCode(resourceCode);
-        if (product.isEmpty()) {
-            event.getChannel().sendMessage("Invalid resource code.").queue();
-            return;
-        } else {
-            resourceName = product.get().name();
-            unit = product.get().cost();
-        }
 
         var staticChannel = event.getJDA().getTextChannelById(Variables.INS_CHANNEL_ID);
 
