@@ -1,15 +1,14 @@
-package com.gb.command;
+package com.bot.command;
 
-import com.gb.command.Command;
-import com.gb.product.ProductList;
-import com.gb.util.CustomNumberFormat;
-import com.gb.util.Variables;
+import com.bot.product.ProductList;
+import com.bot.util.CustomNumberFormat;
+import com.bot.util.Variables;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.text.MessageFormat;
 import java.util.concurrent.TimeUnit;
 
-import static com.gb.util.CustomNumberFormat.shortenValue;
+import static com.bot.util.CustomNumberFormat.shortenValue;
 
 public class InsCalculator implements Command {
     @Override

@@ -1,4 +1,4 @@
-package com.gb.util;
+package com.bot.util;
 
 import java.text.DecimalFormat;
 

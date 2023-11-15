@@ -1,6 +1,6 @@
-package com.gb.command;
+package com.bot.command;
 
-import com.gb.product.ProductList;
+import com.bot.product.ProductList;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.gb.util.CustomNumberFormat.shortenValue;
+import static com.bot.util.CustomNumberFormat.shortenValue;
 
 public class ChannelRenamer implements Command {
     private static final AtomicInteger GLOBAL_COUNTER = new AtomicInteger(0);

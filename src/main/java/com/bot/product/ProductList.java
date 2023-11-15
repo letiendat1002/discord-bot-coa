@@ -1,4 +1,4 @@
-package com.gb.product;
+package com.bot.product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,14 +32,14 @@ public class ProductList {
         productList.add(new Product("Dead Logs", "del", 3000, "log"));
         productList.add(new Product("Birch Logs", "bil", 3000, "log"));
         productList.add(new Product("Apple Woods", "apw", 3000, "log"));
-        productList.add(new Product("Willow Logs", "wil", 5000, "log"));
-        productList.add(new Product("Oak Logs", "oak", 5000, "log"));
-        productList.add(new Product("Chestnut Logs", "chl", 9000, "log"));
-        productList.add(new Product("Maple Logs", "map", 7000, "log"));
+        productList.add(new Product("Willow Logs", "wil", 6000, "log"));
+        productList.add(new Product("Oak Logs", "oak", 7000, "log"));
+        productList.add(new Product("Chestnut Logs", "chl", 10_000, "log"));
+        productList.add(new Product("Maple Logs", "map", 10_000, "log"));
         productList.add(new Product("Magic Logs", "mal", 2500, "log"));
         productList.add(new Product("Olive Logs", "oll", 10_000, "log"));
         productList.add(new Product("Palm Logs", "pal", 5000, "log"));
-        productList.add(new Product("Pear Logs", "pel", 9000, "log"));
+        productList.add(new Product("Pear Logs", "pel", 8000, "log"));
         productList.add(new Product("Lime Logs", "lil", 4000, "log"));
 
         // Relics
@@ -48,11 +48,11 @@ public class ProductList {
         productList.add(new Product("Healing Relics", "her", 4000, "relic"));
         productList.add(new Product("Wealth Relics", "wer", 4000, "relic"));
         productList.add(new Product("Power Relics", "por", 6000, "relic"));
-        productList.add(new Product("Nature Relics", "nar", 6000, "relic"));
-        productList.add(new Product("Fire Relics", "fir", 10_000, "relic"));
+        productList.add(new Product("Nature Relics", "nar", 8000, "relic"));
+        productList.add(new Product("Fire Relics", "fir", 14_000, "relic"));
         productList.add(new Product("Damage Relics", "dar", 8000, "relic"));
         productList.add(new Product("Leeching Relics", "ler", 6000, "relic"));
-        productList.add(new Product("Ice Relics", "icr", 7000, "relic"));
+        productList.add(new Product("Ice Relics", "icr", 10_000, "relic"));
         productList.add(new Product("Experience Relics", "exr", 12_000, "relic"));
         productList.add(new Product("Cursed Relics", "cur", 4000, "relic"));
         productList.add(new Product("Efficiency Relics", "efr", 4000, "relic"));

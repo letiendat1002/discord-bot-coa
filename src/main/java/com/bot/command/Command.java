@@ -1,4 +1,4 @@
-package com.gb.command;
+package com.bot.command;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
