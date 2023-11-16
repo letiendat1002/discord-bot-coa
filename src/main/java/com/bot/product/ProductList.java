@@ -9,7 +9,7 @@ public class ProductList {
 
     static {
         // Ore
-        productList.add(new Product("Coal", "coal", 3000, "ore"));
+        productList.add(new Product("Coal", "coal", 4000, "ore"));
         productList.add(new Product("Silver Ore", "sio", 4000, "ore"));
         productList.add(new Product("Gold Ore", "goo", 4000, "ore"));
         productList.add(new Product("Mythan Ore", "myo", 7000, "ore"));
@@ -32,7 +32,7 @@ public class ProductList {
         productList.add(new Product("Dead Logs", "del", 3000, "log"));
         productList.add(new Product("Birch Logs", "bil", 3000, "log"));
         productList.add(new Product("Apple Woods", "apw", 3000, "log"));
-        productList.add(new Product("Willow Logs", "wil", 6000, "log"));
+        productList.add(new Product("Willow Logs", "wil", 5500, "log"));
         productList.add(new Product("Oak Logs", "oak", 7000, "log"));
         productList.add(new Product("Chestnut Logs", "chl", 10_000, "log"));
         productList.add(new Product("Maple Logs", "map", 10_000, "log"));
@@ -43,17 +43,17 @@ public class ProductList {
         productList.add(new Product("Lime Logs", "lil", 4000, "log"));
 
         // Relics
-        productList.add(new Product("Accuracy Relics", "acr", 3000, "relic"));
+        productList.add(new Product("Accuracy Relics", "acr", 4000, "relic"));
         productList.add(new Product("Guardian Relics", "gur", 4000, "relic"));
         productList.add(new Product("Healing Relics", "her", 4000, "relic"));
         productList.add(new Product("Wealth Relics", "wer", 4000, "relic"));
-        productList.add(new Product("Power Relics", "por", 6000, "relic"));
+        productList.add(new Product("Power Relics", "por", 7000, "relic"));
         productList.add(new Product("Nature Relics", "nar", 8000, "relic"));
         productList.add(new Product("Fire Relics", "fir", 14_000, "relic"));
         productList.add(new Product("Damage Relics", "dar", 8000, "relic"));
         productList.add(new Product("Leeching Relics", "ler", 6000, "relic"));
         productList.add(new Product("Ice Relics", "icr", 10_000, "relic"));
-        productList.add(new Product("Experience Relics", "exr", 12_000, "relic"));
+        productList.add(new Product("Experience Relics", "exr", 13_000, "relic"));
         productList.add(new Product("Cursed Relics", "cur", 4000, "relic"));
         productList.add(new Product("Efficiency Relics", "efr", 4000, "relic"));
         productList.add(new Product("Affliction Relics", "afr", 6000, "relic"));
@@ -65,7 +65,7 @@ public class ProductList {
 
         // Miscellaneous
         productList.add(new Product("Sandstone", "san", 10_000, "misc"));
-        productList.add(new Product("Magnetite", "mag", 150_000, "misc"));
+        productList.add(new Product("Magnetite", "mag", 180_000, "misc"));
     }
 
     public static List<Product> getAllProducts() {

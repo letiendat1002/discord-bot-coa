@@ -1,17 +1,11 @@
 package com.bot;
 
-import com.bot.command.CommandHandler;
-import com.bot.command.OrderConfirm;
-import com.bot.command.OrderReceipt;
-import com.bot.command.OrderUpdateStatus;
+import com.bot.command.*;
 import com.bot.util.Variables;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
-
-import java.util.Arrays;
-import java.util.HashSet;
 
 public class Main extends ListenerAdapter {
     private final CommandHandler commandHandler = new CommandHandler();
@@ -22,6 +16,8 @@ public class Main extends ListenerAdapter {
         commandHandler.registerCommand(new OrderReceipt());
         commandHandler.registerCommand(new OrderConfirm());
         commandHandler.registerCommand(new OrderUpdateStatus());
+        commandHandler.registerCommand(new ProductPrintAll());
+        commandHandler.registerCommand(new CommandPrintAll());
     }
 
     public static void main(String[] args) {
@@ -34,11 +30,7 @@ public class Main extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        var validCommands = new HashSet<>(
-                Arrays.asList(
-                        "ic", "rc", "receipt", "confirm", "ustatus"
-                )
-        );
+        var validCommands = CommandList.validCommands;
         var messageContent = event.getMessage().getContentRaw();
         var commandPrefix = Variables.COMMAND_PREFIX;
 

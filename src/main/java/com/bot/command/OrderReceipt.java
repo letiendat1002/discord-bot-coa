@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
 import static com.bot.util.CustomNumberFormat.shortenValue;
 
 public class OrderReceipt implements Command {
+    public static final String COMMAND_USAGE = "Usage: /receipt <resource_code> <amount> <@customer>";
+
     @Override
     public String getName() {
         return "receipt";
@@ -30,7 +32,7 @@ public class OrderReceipt implements Command {
         event.getMessage().delete().queue();
         if (payArgs.length != 4) {
             event.getChannel()
-                    .sendMessage("Usage: /receipt <resource_code> <amount> <@customer>")
+                    .sendMessage(COMMAND_USAGE)
                     .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
             return;
         }

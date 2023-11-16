@@ -5,6 +5,8 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.concurrent.TimeUnit;
 
 public class OrderConfirm implements Command {
+    public static final String COMMAND_USAGE = "Usage: /confirm";
+
     @Override
     public String getName() {
         return "confirm";
@@ -17,7 +19,7 @@ public class OrderConfirm implements Command {
         event.getMessage().delete().queue();
         if (payArgs.length != 1) {
             event.getChannel()
-                    .sendMessage("Usage: /confirm")
+                    .sendMessage(COMMAND_USAGE)
                     .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
             return;
         }

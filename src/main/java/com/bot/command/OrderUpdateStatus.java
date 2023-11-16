@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class OrderUpdateStatus implements Command {
+    public static final String COMMAND_USAGE = "Usage: /ustatus <message-id> <-/+>";
+
     @Override
     public String getName() {
         return "ustatus";
@@ -25,7 +27,7 @@ public class OrderUpdateStatus implements Command {
         event.getMessage().delete().queue();
         if (payArgs.length != 3) {
             event.getChannel()
-                    .sendMessage("Usage: /ustatus <message-id> <-/+>")
+                    .sendMessage(COMMAND_USAGE)
                     .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
             return;
         }
