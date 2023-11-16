@@ -16,15 +16,15 @@ public class OrderConfirm implements Command {
     public void execute(MessageReceivedEvent event) {
         var payArgs = event.getMessage().getContentRaw().split(" ");
 
-        event.getMessage().delete().queue();
         if (payArgs.length != 1) {
+            event.getMessage().delete().queue();
             event.getChannel()
                     .sendMessage(COMMAND_USAGE)
                     .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
             return;
         }
 
-        var confirmMessage_1 = "Thank you for your confirmation " +
+        var confirmMessage_1 = "# ♡Order Confirmed♡\nThank you for your confirmation " +
                 event.getAuthor().getAsMention() +
                 ", your order is now added to the Order Queue List.\n" +
                 "We will contact you again once your order is ready for pickup. ♡⁠(⁠Ӧ⁠ｖ⁠Ӧ⁠｡⁠)\n";
