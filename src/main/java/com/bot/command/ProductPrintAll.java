@@ -55,7 +55,7 @@ public class ProductPrintAll implements Command {
 
             productMessage
                     .append("- ")
-                    .append(String.format("%s - %s- %s\n",
+                    .append(String.format("%s - %s - %s\n",
                                     product.name(),
                                     product.code(),
                                     CustomNumberFormat.shortenValue(product.cost())
