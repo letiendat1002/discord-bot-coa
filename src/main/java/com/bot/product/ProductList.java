@@ -57,15 +57,35 @@ public class ProductList {
         productList.add(new Product("Cursed Relics", "cur", 4000, "relic"));
         productList.add(new Product("Efficiency Relics", "efr", 4000, "relic"));
         productList.add(new Product("Affliction Relics", "afr", 6000, "relic"));
-        productList.add(new Product("Tablets", "tab", 10_000, "relic"));
+        productList.add(new Product("Tablets", "tabl", 10_000, "relic"));
 
         // Tailoring
         productList.add(new Product("Books", "book", 5000, "tailoring"));
         productList.add(new Product("Magical Essence", "mess", 2000, "tailoring"));
 
+        // Bait
+        productList.add(new Product("Earth/Ice/Corpse/Toxic/Sandworm", "worm", 500, "bait"));
+        productList.add(new Product("Beetles", "beet", 2500, "bait"));
+        productList.add(new Product("Grasshoppers", "gras", 12_000, "bait"));
+        productList.add(new Product("Wasp", "wasp", 2500, "bait"));
+        productList.add(new Product("Scallops", "scal", 10_000, "bait"));
+
+        // Fish
+        productList.add(new Product("Eel", "eel", 4000, "fish"));
+        productList.add(new Product("Anglerfish", "angl", 5000, "fish"));
+        productList.add(new Product("Trout", "trou", 9000, "fish"));
+        productList.add(new Product("Bass", "bass", 39_000, "fish"));
+
+        // Cooking
+        productList.add(new Product("Cooked Eel", "cee", 3500, "cooked-fish"));
+        productList.add(new Product("Cooked Anglerfish", "can", 4000, "cooked-fish"));
+        productList.add(new Product("Cooked Trout", "ctr", 6000, "cooked-fish"));
+        productList.add(new Product("Cooked Bass", "cba", 12_000, "cooked-fish"));
+
+
         // Miscellaneous
-        productList.add(new Product("Sandstone", "san", 10_000, "misc"));
-        productList.add(new Product("Magnetite", "mag", 180_000, "misc"));
+        productList.add(new Product("Sandstone", "sand", 10_000, "misc"));
+        productList.add(new Product("Magnetite", "magn", 180_000, "misc"));
     }
 
     public static List<Product> getAllProducts() {
