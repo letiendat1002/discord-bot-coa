@@ -1,10 +1,10 @@
 package com.bot.command;
 
 import com.bot.product.ProductList;
+import com.bot.util.AdminRoleChecker;
 import com.bot.util.CustomNumberFormat;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class ProductPrintAll implements Command {
@@ -17,21 +17,7 @@ public class ProductPrintAll implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (Objects.requireNonNull(event.getMember()).getRoles().stream().noneMatch(
-                role -> role.getName().equals("Staff") || role.getName().equals("MANAGER"))) {
-            event.getChannel()
-                    .sendMessage("You are not allowed to use this command.")
-                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
-            return;
-        }
-
-        var payArgs = event.getMessage().getContentRaw().split(" ");
-
-        event.getMessage().delete().queue();
-        if (payArgs.length != 1) {
-            event.getChannel()
-                    .sendMessage(COMMAND_USAGE)
-                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+        if (!isValidCommand(event, COMMAND_USAGE)) {
             return;
         }
 
@@ -71,5 +57,22 @@ public class ProductPrintAll implements Command {
         }
 
         event.getChannel().sendMessage(productMessage.toString()).queue();
+    }
+
+    static boolean isValidCommand(MessageReceivedEvent event, String commandUsage) {
+        if (AdminRoleChecker.isNotAdmin(event)) {
+            return false;
+        }
+
+        var payArgs = event.getMessage().getContentRaw().split(" ");
+
+        event.getMessage().delete().queue();
+        if (payArgs.length != 1) {
+            event.getChannel()
+                    .sendMessage(commandUsage)
+                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+            return false;
+        }
+        return true;
     }
 }

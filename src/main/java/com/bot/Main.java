@@ -11,8 +11,6 @@ public class Main extends ListenerAdapter {
     private final CommandHandler commandHandler = new CommandHandler();
 
     public Main() {
-//        commandHandler.registerCommand(new InsCalculator());
-//        commandHandler.registerCommand(new ChannelRenamer());
         commandHandler.registerCommand(new OrderReceipt());
         commandHandler.registerCommand(new OrderConfirm());
         commandHandler.registerCommand(new OrderUpdateStatus());
