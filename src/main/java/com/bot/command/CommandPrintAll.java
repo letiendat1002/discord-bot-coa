@@ -1,16 +1,13 @@
 package com.bot.command;
 
-import com.bot.product.ProductList;
-import com.bot.util.CustomNumberFormat;
 import com.bot.util.Variables;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class CommandPrintAll implements Command {
-    public static final String COMMAND_USAGE = "Usage: /clist";
+    public static final String COMMAND_USAGE = "***List all Phoenix's commands (admin)*** - __Usage__: /clist";
 
     @Override
     public String getName() {
@@ -40,23 +37,18 @@ public class CommandPrintAll implements Command {
         var commands = CommandList.validCommands;
         var commandUsage = CommandList.commandUsage;
 
-        var commandMessage = new StringBuilder("""
-                ```
-                Command List
-                ```
-                """);
+        var commandMessage = new StringBuilder("# Command List\n");
 
         for (var command : commands) {
             commandMessage
-                    .append("- ")
+                    .append("## ")
                     .append(Variables.COMMAND_PREFIX)
                     .append(command)
-                    .append(" - ")
+                    .append("\n> ")
                     .append(commandUsage.getOrDefault(command, "No usage information available"))
                     .append("\n");
         }
 
-        // Send the command list
         event.getChannel().sendMessage(commandMessage.toString()).queue();
     }
 }

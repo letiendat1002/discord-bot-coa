@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.concurrent.TimeUnit;
 
 public class OrderConfirm implements Command {
-    public static final String COMMAND_USAGE = "Usage: /confirm";
+    public static final String COMMAND_USAGE = "***Order Confirm*** - __Usage__: /confirm";
 
     @Override
     public String getName() {

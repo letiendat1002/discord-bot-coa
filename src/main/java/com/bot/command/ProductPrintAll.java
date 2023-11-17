@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class ProductPrintAll implements Command {
-    public static final String COMMAND_USAGE = "Usage: /plist";
+    public static final String COMMAND_USAGE = "***List all products (admin)*** - __Usage__: /plist";
 
     @Override
     public String getName() {

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import static com.bot.util.CustomNumberFormat.shortenValue;
 
 public class OrderReceipt implements Command {
-    public static final String COMMAND_USAGE = "Usage: /receipt <@customer> <item_1> <amount_1> [<item_2> <item_3> ...]";
+    public static final String COMMAND_USAGE = "***Order Receipt (admin)*** - __Usage__: /receipt <@customer> <item_1> <amount_1> [<item_2> <item_3> ...]";
 
     @Override
     public String getName() {
