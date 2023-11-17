@@ -1,5 +1,6 @@
 package com.bot.command;
 
+import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.concurrent.TimeUnit;
@@ -34,7 +35,10 @@ public class OrderConfirm implements Command {
                 ```
                 """;
 
+        // tick yes
         event.getChannel().sendMessage(confirmMessage_1).queue();
-        event.getChannel().sendMessage(confirmMessage_2).queue();
+        event.getChannel().sendMessage(confirmMessage_2).queue(
+                message -> message.pin().queue()
+        );
     }
 }

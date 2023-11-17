@@ -111,6 +111,7 @@ public class ProductList {
         if (productName.trim().isEmpty()) {
             return Optional.empty();
         }
+        var productList = getAllProducts();
         return productList.stream()
                 .filter(product -> product.name().toLowerCase().contains(productName.strip().toLowerCase()))
                 .findFirst();
@@ -120,6 +121,7 @@ public class ProductList {
         if (productCode.trim().isEmpty()) {
             return Optional.empty();
         }
+        var productList = getAllProducts();
         return productList.stream()
                 .filter(product -> product.code().equals(productCode.strip().toLowerCase()))
                 .findFirst();

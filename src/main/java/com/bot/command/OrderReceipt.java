@@ -91,7 +91,9 @@ public class OrderReceipt implements Command {
                 .append("`\n")
                 .append("```Reply [/confirm] if the order list is correct and the prices are acceptable. Thank you (⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)```");
 
-        event.getChannel().sendMessage(receiptMessage.toString()).queue();
+        event.getChannel().sendMessage(receiptMessage.toString()).queue(
+                message -> message.pin().queue()
+        );
     }
 
     private record Result(String resourceName, int unit) {
