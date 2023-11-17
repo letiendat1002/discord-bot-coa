@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import static com.bot.util.CustomNumberFormat.shortenValue;
 
 public class OrderReceipt implements Command {
-    public static final String COMMAND_USAGE = "***Order Receipt (admin)*** - __Usage__: /receipt <@customer> <item_1> <amount_1> [<item_2> <item_3> ...]";
+    public static final String COMMAND_USAGE = "***Order Receipt (admin)***\n> - __Usage__: /receipt <@customer> <item_1> <amount_1> [<item_2> <item_3> ...]";
 
     @Override
     public String getName() {
@@ -27,18 +27,17 @@ public class OrderReceipt implements Command {
             return;
         }
 
-        var payArgs = event.getMessage().getContentRaw().split(" ");
-        System.out.println("payArgs: " + payArgs.length);
+        var commandArgs = event.getMessage().getContentRaw().split(" ");
 
         event.getMessage().delete().queue();
-        if (payArgs.length < 4 || payArgs.length % 2 != 0) {
+        if (commandArgs.length < 4 || commandArgs.length % 2 != 0) {
             event.getChannel()
                     .sendMessage(COMMAND_USAGE)
-                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+                    .queue(message -> message.delete().queueAfter(7, TimeUnit.SECONDS));
             return;
         }
 
-        var mention = payArgs[1];
+        var mention = commandArgs[1];
 
         var receiptMessage = new StringBuilder(mention + " here's the receipt\n" +
                 "# ♡Order Receipt♡\n" +
@@ -47,8 +46,8 @@ public class OrderReceipt implements Command {
         var totalCost = 0;
         var customNumberFormat = new CustomNumberFormat();
 
-        for (var i = 2; i < payArgs.length; i += 2) {
-            var resourceCode = payArgs[i];
+        for (var i = 2; i < commandArgs.length; i += 2) {
+            var resourceCode = commandArgs[i];
             var resourceName = "";
             int unit;
             int amount;
@@ -64,7 +63,7 @@ public class OrderReceipt implements Command {
             }
 
             try {
-                amount = Math.abs(Integer.parseInt(payArgs[i + 1]));
+                amount = Math.abs(Integer.parseInt(commandArgs[i + 1]));
             } catch (NumberFormatException e) {
                 event.getChannel().sendMessage("Invalid quantity. Please provide a valid number.")
                         .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));

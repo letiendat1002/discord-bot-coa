@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class CommandPrintAll implements Command {
-    public static final String COMMAND_USAGE = "***List all Phoenix's commands (admin)*** - __Usage__: /clist";
+    public static final String COMMAND_USAGE = "***List all Phoenix's commands (admin)***\n> - __Usage__: /clist";
 
     @Override
     public String getName() {

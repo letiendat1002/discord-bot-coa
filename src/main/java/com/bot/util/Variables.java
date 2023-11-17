@@ -7,6 +7,6 @@ public class Variables {
     public static final String COMMAND_PREFIX = "/";
 
     public static final String INS_CHANNEL_ID = "1164116381785137163";
+    public static final String PSC_INS_CHANNEL_ID = "1174754027137937568";
 
-    public static final String OUTS_CHANNEL_ID = "1164116670617493504";
 }
