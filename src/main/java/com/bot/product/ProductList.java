@@ -18,6 +18,7 @@ public class ProductList {
             addProduct(productList, "Cobalt Ore", "cto", 10_000, ProductType.ORE.name());
             addProduct(productList, "Varaxium Ore", "vmo", 14_000, ProductType.ORE.name());
             addProduct(productList, "Magic Ore", "mco", 5000, ProductType.ORE.name());
+            addProduct(productList, "Crimsteel Ore", "cro", 4_000, ProductType.ORE.name());
 
             // Salt
             addProduct(productList, "Salt", "sts", 3000, ProductType.SALT.name());
@@ -88,7 +89,7 @@ public class ProductList {
             addProduct(productList, "Cooked Bass", "bsc", 12_000, ProductType.COOKED_FISH.name());
 
             // Miscellaneous
-            addProduct(productList, "Sandstone", "sdm", 10_000, ProductType.MISC.name());
+            addProduct(productList, "Sandstone", "sem", 10_000, ProductType.MISC.name());
             addProduct(productList, "Magnetite", "mem", 180_000, ProductType.MISC.name());
         }
         return productList;

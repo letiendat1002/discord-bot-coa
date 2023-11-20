@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 import static com.bot.util.CustomNumberFormat.shortenValue;
 
 public class OrderReceipt implements Command {
-    public static final String COMMAND_USAGE = "***Order Receipt (admin)***\n> - __Usage__: /receipt <@customer> <item_1> <amount_1> [<item_2> <item_3> ...]";
+    public static final String COMMAND_USAGE = "***Order Receipt (admin)***\n> - __Usage__: `/receipt <@customer> <item_1> <amount_1> [<item_2> <amount_2> ...]`";
 
     private static Optional<Result> getProductNameAndUnitPrice(MessageReceivedEvent event, String resourceCode) {
         String resourceName;
@@ -53,7 +53,7 @@ public class OrderReceipt implements Command {
 
         var receiptMessage = new StringBuilder(mention + " here's the receipt\n" +
                 "# ♡Order Receipt♡\n" +
-                "```Kindly confirm your order(s):```\n");
+                "```Kindly confirm your order(s):```");
 
         var totalCost = 0;
         var customNumberFormat = new CustomNumberFormat();

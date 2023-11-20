@@ -8,7 +8,7 @@ import java.util.Map;
 public class CommandList {
     public static List<String> validCommands = new ArrayList<>(
             List.of(
-                    "clist", "plist", "receipt", "confirm", "ustatus"
+                    "clist", "plist", "receipt", "confirm", "ustatus", "worker-order"
             )
     );
 
@@ -21,6 +21,7 @@ public class CommandList {
         map.put("receipt", OrderReceipt.COMMAND_USAGE);
         map.put("confirm", OrderConfirm.COMMAND_USAGE);
         map.put("ustatus", OrderUpdateStatus.COMMAND_USAGE);
+        map.put("worker-order", WorkerOrderCreate.COMMAND_USAGE);
         return map;
     }
 }

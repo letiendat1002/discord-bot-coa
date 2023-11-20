@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.concurrent.TimeUnit;
 
 public class OrderUpdateStatus implements Command {
-    public static final String COMMAND_USAGE = "***Update Order Status (admin)***\n> - __Usage__: /ustatus <message-id> <-/+>";
+    public static final String COMMAND_USAGE = "***Update Order Status (admin)***\n> - __Usage__: `/ustatus <message-id> <-/+>`";
 
     @Override
     public String getName() {

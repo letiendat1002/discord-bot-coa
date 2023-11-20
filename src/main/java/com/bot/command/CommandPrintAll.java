@@ -4,7 +4,7 @@ import com.bot.util.Variables;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class CommandPrintAll implements Command {
-    public static final String COMMAND_USAGE = "***List all Phoenix's commands (admin)***\n> - __Usage__: /clist";
+    public static final String COMMAND_USAGE = "***List all Phoenix's commands (admin)***\n> - __Usage__: `/clist`";
 
     @Override
     public String getName() {
@@ -13,7 +13,7 @@ public class CommandPrintAll implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (ProductPrintAll.isValidCommand(event, COMMAND_USAGE)) return;
+        if (!ProductPrintAll.isValidCommand(event, COMMAND_USAGE)) return;
 
         var commands = CommandList.validCommands;
         var commandUsage = CommandList.commandUsage;
