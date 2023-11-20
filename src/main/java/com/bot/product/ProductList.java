@@ -1,6 +1,9 @@
 package com.bot.product;
 
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class ProductList {
     private static final Set<String> PRODUCT_CODES = new HashSet<>();
@@ -70,7 +73,11 @@ public class ProductList {
             addProduct(productList, "Magical Essence", "met", 2000, ProductType.TAILORING.name());
 
             // Bait
-            addProduct(productList, "Earth/Ice/Corpse/Toxic/Sandworm", "wob", 500, ProductType.BAIT.name());
+            addProduct(productList, "Earthworm", "emb", 1000, ProductType.BAIT.name());
+            addProduct(productList, "Iceworm", "imb", 1000, ProductType.BAIT.name());
+            addProduct(productList, "Corpseworm", "cmb", 1000, ProductType.BAIT.name());
+            addProduct(productList, "Toxic Worm", "tmb", 1000, ProductType.BAIT.name());
+            addProduct(productList, "Sandworm", "smb", 1000, ProductType.BAIT.name());
             addProduct(productList, "Beetles", "beb", 2500, ProductType.BAIT.name());
             addProduct(productList, "Grasshoppers", "grb", 12_000, ProductType.BAIT.name());
             addProduct(productList, "Wasp", "wpb", 2500, ProductType.BAIT.name());
@@ -128,7 +135,22 @@ public class ProductList {
                 .findFirst();
     }
 
+    public static Optional<ProductBasicInfo> getProductBasicInfo(MessageReceivedEvent event, String resourceCode) {
+        String resourceName;
+        int unit;
+        var product = ProductList.getProductByCode(resourceCode);
+        if (product.isEmpty()) {
+            return Optional.empty();
+        }
+        resourceName = product.get().name();
+        unit = product.get().cost();
+        return Optional.of(new ProductBasicInfo(resourceName, unit));
+    }
+
     private enum ProductType {
         ORE, SALT, BAR, LOG, RELIC, TAILORING, BAIT, FISH, COOKED_FISH, MISC
+    }
+
+    public record ProductBasicInfo(String resourceName, int unit) {
     }
 }

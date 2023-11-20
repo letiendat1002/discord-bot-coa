@@ -5,28 +5,12 @@ import com.bot.util.AdminRoleChecker;
 import com.bot.util.CustomNumberFormat;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import static com.bot.util.CustomNumberFormat.shortenValue;
 
 public class OrderReceipt implements Command {
     public static final String COMMAND_USAGE = "***Order Receipt (admin)***\n> - __Usage__: `/receipt <@customer> <item_1> <amount_1> [<item_2> <amount_2> ...]`";
-
-    private static Optional<Result> getProductNameAndUnitPrice(MessageReceivedEvent event, String resourceCode) {
-        String resourceName;
-        int unit;
-        var product = ProductList.getProductByCode(resourceCode);
-        if (product.isEmpty()) {
-            event.getChannel().sendMessage("Invalid resource code.")
-                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
-            return Optional.empty();
-        } else {
-            resourceName = product.get().name();
-            unit = product.get().cost();
-        }
-        return Optional.of(new Result(resourceName, unit));
-    }
 
     @Override
     public String getName() {
@@ -62,8 +46,12 @@ public class OrderReceipt implements Command {
             var resourceCode = commandArgs[i];
             int amount;
 
-            var result = getProductNameAndUnitPrice(event, resourceCode);
-            if (result.isEmpty()) return;
+            var result = ProductList.getProductBasicInfo(event, resourceCode);
+            if (result.isEmpty()) {
+                event.getChannel().sendMessage("Invalid resource code.")
+                        .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+                return;
+            }
             var productInfo = result.get();
 
             try {
@@ -94,8 +82,5 @@ public class OrderReceipt implements Command {
         event.getChannel().sendMessage(receiptMessage.toString()).queue(
                 message -> message.pin().queue()
         );
-    }
-
-    private record Result(String resourceName, int unit) {
     }
 }

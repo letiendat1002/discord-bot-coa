@@ -22,10 +22,12 @@ public class Variables {
             List.of(REGULAR_CATEGORY_ID,
                     VIP_REGULAR_CATEGORY_ID,
                     VVIP_REGULAR_CATEGORY_ID,
-                    SELLER_SEARCH_CATEGORY_ID,
-                    SELLER_STOCK_CATEGORY_ID,
-                    WORKER_REGULAR_CATEGORY_ID,
-                    WORKER_SELLER_SEARCH_CATEGORY_ID
+                    SELLER_SEARCH_CATEGORY_ID
             )
     );
+
+    public static final String REGULAR_ORDER_NAME = "Regular Order";
+    public static final String SELLER_SEARCH_ORDER_NAME = "Seller Search Order";
+
+    public static final String WORKERS_PING = "<@&1172842755337236510>";
 }
