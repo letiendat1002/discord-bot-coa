@@ -1,6 +1,6 @@
 package com.bot.command;
 
-import com.bot.util.AdminRoleChecker;
+import com.bot.util.RoleChecker;
 import com.bot.util.Variables;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -19,7 +19,7 @@ public class WorkerOrderCreate implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (AdminRoleChecker.isNotAdmin(event)) {
+        if (RoleChecker.isNotAdmin(event)) {
             return;
         }
 
@@ -93,7 +93,7 @@ public class WorkerOrderCreate implements Command {
                 return;
             }
 
-            var result = getProductBasicInfo(event, resourceCode);
+            var result = getProductBasicInfo(resourceCode);
             if (result.isEmpty() && !channelCategoryId.equals(Variables.SELLER_SEARCH_CATEGORY_ID)) {
                 event.getChannel().sendMessage("Invalid resource code.")
                         .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));

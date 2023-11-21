@@ -1,6 +1,6 @@
 package com.bot.command;
 
-import com.bot.util.AdminRoleChecker;
+import com.bot.util.RoleChecker;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.concurrent.TimeUnit;
@@ -15,7 +15,7 @@ public class OrderUpdateStatus implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (AdminRoleChecker.isNotAdmin(event)) {
+        if (RoleChecker.isNotAdmin(event)) {
             return;
         }
 

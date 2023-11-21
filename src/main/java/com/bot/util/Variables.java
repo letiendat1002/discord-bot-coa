@@ -1,7 +1,6 @@
 package com.bot.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Variables {
@@ -18,7 +17,7 @@ public class Variables {
     public static final String WORKER_REGULAR_CATEGORY_ID = "1174679356208066660";
     public static final String WORKER_SELLER_SEARCH_CATEGORY_ID = "1174679617777438761";
 
-    public static final List<String> validCategories = new ArrayList<String>(
+    public static final List<String> validCategories = new ArrayList<>(
             List.of(REGULAR_CATEGORY_ID,
                     VIP_REGULAR_CATEGORY_ID,
                     VVIP_REGULAR_CATEGORY_ID,
@@ -30,4 +29,6 @@ public class Variables {
     public static final String SELLER_SEARCH_ORDER_NAME = "Seller Search Order";
 
     public static final String WORKERS_PING = "<@&1172842755337236510>";
+
+    public static final String STAFF_PING = "<@&1173903842795065354>";
 }

@@ -1,7 +1,7 @@
 package com.bot.command;
 
 import com.bot.product.ProductList;
-import com.bot.util.AdminRoleChecker;
+import com.bot.util.RoleChecker;
 import com.bot.util.CustomNumberFormat;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -9,6 +9,23 @@ import java.util.concurrent.TimeUnit;
 
 public class ProductPrintAll implements Command {
     public static final String COMMAND_USAGE = "***List all products (admin)***\n> - __Usage__: `/plist`";
+
+    static boolean isValidCommand(MessageReceivedEvent event, String commandUsage) {
+        if (RoleChecker.isNotAdmin(event)) {
+            return false;
+        }
+
+        var payArgs = event.getMessage().getContentRaw().split(" ");
+
+        event.getMessage().delete().queue();
+        if (payArgs.length != 1) {
+            event.getChannel()
+                    .sendMessage(commandUsage)
+                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public String getName() {
@@ -30,13 +47,17 @@ public class ProductPrintAll implements Command {
         for (var product : productList) {
             if (!currentCategory.equals(product.type()) && currentCategory.isEmpty()) {
                 currentCategory = product.type();
-                productMessage.append("***").append(currentCategory.toUpperCase()).append("***:\n");
+                productMessage.append("***")
+                        .append(currentCategory.toUpperCase().replace("_", " "))
+                        .append("***:\n");
             } else if (!currentCategory.equals(product.type())) {
                 currentCategory = product.type();
                 event.getChannel().sendMessage(productMessage.toString()).queue();
 
                 productMessage.setLength(0);
-                productMessage.append("***").append(currentCategory.toUpperCase()).append("***:\n");
+                productMessage.append("***")
+                        .append(currentCategory.toUpperCase().replace("_", " "))
+                        .append("***:\n");
             }
 
             productMessage
@@ -57,22 +78,5 @@ public class ProductPrintAll implements Command {
         }
 
         event.getChannel().sendMessage(productMessage.toString()).queue();
-    }
-
-    static boolean isValidCommand(MessageReceivedEvent event, String commandUsage) {
-        if (AdminRoleChecker.isNotAdmin(event)) {
-            return false;
-        }
-
-        var payArgs = event.getMessage().getContentRaw().split(" ");
-
-        event.getMessage().delete().queue();
-        if (payArgs.length != 1) {
-            event.getChannel()
-                    .sendMessage(commandUsage)
-                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
-            return false;
-        }
-        return true;
     }
 }

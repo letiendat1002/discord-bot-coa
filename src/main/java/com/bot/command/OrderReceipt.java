@@ -1,7 +1,7 @@
 package com.bot.command;
 
 import com.bot.product.ProductList;
-import com.bot.util.AdminRoleChecker;
+import com.bot.util.RoleChecker;
 import com.bot.util.CustomNumberFormat;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -19,7 +19,7 @@ public class OrderReceipt implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (AdminRoleChecker.isNotAdmin(event)) {
+        if (RoleChecker.isNotAdmin(event)) {
             return;
         }
 
@@ -46,7 +46,7 @@ public class OrderReceipt implements Command {
             var resourceCode = commandArgs[i];
             int amount;
 
-            var result = ProductList.getProductBasicInfo(event, resourceCode);
+            var result = ProductList.getProductBasicInfo(resourceCode);
             if (result.isEmpty()) {
                 event.getChannel().sendMessage("Invalid resource code.")
                         .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));

@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-public class AdminRoleChecker {
+public class RoleChecker {
     public static boolean isNotAdmin(MessageReceivedEvent event) {
         if (Objects.requireNonNull(event.getMember()).getRoles().stream().noneMatch(
                 role -> role.getName().equals("Staff") || role.getName().equals("MANAGER"))) {
