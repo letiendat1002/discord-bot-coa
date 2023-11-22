@@ -10,7 +10,7 @@ public class RoleChecker {
             return false;
         }
         if (event.getMember() == null) {
-            event.getChannel().sendMessage(Constants.ERROR_MESSAGE).queue(
+            event.getChannel().sendMessage(Constants.GET_MEMBER_ERROR_MESSAGE).queue(
                     message -> message.delete().queueAfter(5, TimeUnit.SECONDS)
             );
             return false;

@@ -1,7 +1,6 @@
 package com.bot.command;
 
 import com.bot.product.ProductList;
-import com.bot.util.Constants;
 import com.bot.util.RoleChecker;
 import com.bot.util.CustomNumberFormat;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
