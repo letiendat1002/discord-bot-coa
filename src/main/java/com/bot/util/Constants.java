@@ -8,6 +8,10 @@ public class Constants {
     public static final String TOKEN_PSC = "MTE3NDI2MTkxMDE0NTg2MzY4MA.GSHBPU.GOkBhWgCMulRKJQE7xQb3HVrktocuG-mwK7GW8";
     public static final String COMMAND_PREFIX = "/";
     public static final int MAX_MESSAGE_LENGTH = 1900;
+    public static final String PENDING_STATUS = "Pending";
+    public static final String ON_PROGRESS_STATUS = "On Progress";
+    public static final String COMPLETED_STATUS = "Completed";
+    public static final String UNKNOWN_STATUS = "Unknown";
     public static final String REGULAR_CATEGORY_ID = "1173921114183962684";
     public static final String VIP_REGULAR_CATEGORY_ID = "1174751714843299850";
     public static final String VVIP_REGULAR_CATEGORY_ID = "1174751859253182474";
@@ -22,7 +26,8 @@ public class Constants {
     public static final String STAFF_PING = "<@&1173903842795065354>";
     public static final String UNALLOWED_COMMAND_EXECUTION_MESSAGE = "You are not allowed to use this command.";
     public static final String UNALLOWED_CHANNEL_FOR_COMMAND_EXECUTION_MESSAGE = "The command can't be used in here.";
-    public static final String GET_MEMBER_ERROR_MESSAGE = "Failed while fetching executor info, please try again...";
+    public static final String ERROR_GET_MEMBER_MESSAGE = "Failed while fetching executor info, please try again...";
+    public static final String ERROR_UPDATE_STATUS_MESSAGE = "Error updating status: Unexpected message format.";
 
     public static final Set<String> allowedCategoryIds = new HashSet<>(List.of(
             REGULAR_CATEGORY_ID,

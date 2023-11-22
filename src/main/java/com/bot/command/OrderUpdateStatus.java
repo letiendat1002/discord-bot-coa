@@ -49,7 +49,7 @@ public class OrderUpdateStatus implements Command {
         if (startIndex != -1 && endIndex != -1) {
             return content.substring(startIndex + 1, endIndex);
         } else {
-            return "Unknown";
+            return Constants.UNKNOWN_STATUS;
         }
     }
 
@@ -65,16 +65,16 @@ public class OrderUpdateStatus implements Command {
 
     private String getPreviousStatus(String currentStatus) {
         return switch (currentStatus) {
-            case "On Progress" -> "Pending";
-            case "Complete" -> "On Progress";
+            case Constants.ON_PROGRESS_STATUS -> Constants.PENDING_STATUS;
+            case Constants.COMPLETED_STATUS -> Constants.ON_PROGRESS_STATUS;
             default -> currentStatus;
         };
     }
 
     private String getNextStatus(String currentStatus) {
         return switch (currentStatus) {
-            case "Pending" -> "On Progress";
-            case "On Progress" -> "Complete";
+            case Constants.PENDING_STATUS -> Constants.ON_PROGRESS_STATUS;
+            case Constants.ON_PROGRESS_STATUS -> Constants.COMPLETED_STATUS;
             default -> currentStatus;
         };
     }
@@ -93,7 +93,7 @@ public class OrderUpdateStatus implements Command {
 
             message.editMessage(newContent).queue();
         } else {
-            channel.sendMessage("Error updating status: Unexpected message format.")
+            channel.sendMessage(Constants.ERROR_UPDATE_STATUS_MESSAGE)
                     .queue(mes -> mes.delete().queueAfter(5, TimeUnit.SECONDS));
         }
     }

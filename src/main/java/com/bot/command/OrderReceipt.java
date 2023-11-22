@@ -29,7 +29,7 @@ public class OrderReceipt implements Command {
         if (commandArgs.length < 4 || commandArgs.length % 2 != 0) {
             event.getChannel()
                     .sendMessage(COMMAND_USAGE)
-                    .queue(message -> message.delete().queueAfter(7, TimeUnit.SECONDS));
+                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
             return;
         }
 
