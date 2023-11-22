@@ -1,12 +1,11 @@
 package com.bot.command;
 
-import com.bot.util.Variables;
+import com.bot.util.Constants;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+
+import static com.bot.util.RoleChecker.isShopper;
 
 public class OrderConfirm implements Command {
     public static final String COMMAND_USAGE = "***Order Confirm***\n> - __Usage__: `/confirm`";
@@ -18,21 +17,12 @@ public class OrderConfirm implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (Objects.requireNonNull(event.getMember()).getRoles().stream().anyMatch(
-                role -> role.getName().equals("Shoppers"))) {
+        if (isShopper(event)) {
             var currentCategoryId = event.getChannel().asTextChannel().getParentCategoryId();
 
-            var allowedCategoryIds = new HashSet<>(List.of(
-                    Variables.REGULAR_CATEGORY_ID,
-                    Variables.VIP_REGULAR_CATEGORY_ID,
-                    Variables.VVIP_REGULAR_CATEGORY_ID,
-                    Variables.SELLER_SEARCH_CATEGORY_ID,
-                    Variables.SELLER_STOCK_CATEGORY_ID
-            ));
-
-            if (currentCategoryId == null || !allowedCategoryIds.contains(currentCategoryId)
+            if (currentCategoryId == null || !Constants.allowedCategoryIds.contains(currentCategoryId)
             ) {
-                event.getChannel().sendMessage("You are not allowed to use this command in this channel.").queue();
+                event.getChannel().sendMessage(Constants.UNALLOWED_CHANNEL_FOR_COMMAND_EXECUTION_MESSAGE).queue();
                 return;
             }
         }
@@ -47,10 +37,10 @@ public class OrderConfirm implements Command {
             return;
         }
 
-        var confirmMessage_1 = "# ♡Order Confirmed♡ %s\nThank you for your confirmation ".formatted(Variables.STAFF_PING) +
-                event.getAuthor().getAsMention() +
-                ", your order is now added to the Order Queue List.\n" +
-                "We will contact you again once your order is ready for pickup. ♡⁠(⁠Ӧ⁠ｖ⁠Ӧ⁠｡⁠)\n";
+
+        var confirmMessage_1 = String.format("# ♡Order Confirmed♡ %s\nThank you for your confirmation %s, your order is now added to the Order Queue List.\nWe will contact you again once your order is ready for pickup. ♡⁠(⁠Ӧ⁠ｖ⁠Ӧ⁠｡⁠)\n",
+                Constants.STAFF_PING, event.getAuthor().getAsMention());
+
         var confirmMessage_2 = """
                 ```
                 STATUS: [Pending]

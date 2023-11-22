@@ -21,13 +21,10 @@ public class CustomNumberFormat extends DecimalFormat {
         }
     }
 
-    private static String formatShortenedValue(Number value, String suffix) {
-        var formattedValue = String.format("%.3f", value.doubleValue());
+    private static String formatShortenedValue(double value, String suffix) {
+        var formattedValue = String.format("%.3f", value)
+                .replaceAll("\\.0*$", "");
 
-        // Remove trailing zeros from the decimal portion
-        formattedValue = formattedValue.replaceAll("\\.0*$", "");
-
-        // If there are more than 1 decimal place remaining, remove the excess
         formattedValue = formattedValue.replaceAll("(\\.\\d*?)0+$", "$1");
 
         return formattedValue + suffix;

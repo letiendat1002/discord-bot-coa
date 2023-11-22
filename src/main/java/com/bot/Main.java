@@ -1,7 +1,7 @@
 package com.bot;
 
 import com.bot.command.*;
-import com.bot.util.Variables;
+import com.bot.util.Constants;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -21,7 +21,7 @@ public class Main extends ListenerAdapter {
 
     public static void main(String[] args) {
         var jda = JDABuilder
-                .createDefault(Variables.TOKEN_PSC)
+                .createDefault(Constants.TOKEN_PSC)
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .build();
         jda.addEventListener(new Main());
@@ -29,9 +29,9 @@ public class Main extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        var validCommands = CommandList.validCommands;
+        var validCommands = CommandList.VALID_COMMANDS;
         var messageContent = event.getMessage().getContentRaw();
-        var commandPrefix = Variables.COMMAND_PREFIX;
+        var commandPrefix = Constants.COMMAND_PREFIX;
 
         if (messageContent.startsWith(commandPrefix)) {
             var command = messageContent.substring(commandPrefix.length());

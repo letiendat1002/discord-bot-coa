@@ -1,7 +1,7 @@
 package com.bot.command;
 
 import com.bot.util.RoleChecker;
-import com.bot.util.Variables;
+import com.bot.util.Constants;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.Objects;
@@ -19,7 +19,7 @@ public class WorkerOrderCreate implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (RoleChecker.isNotAdmin(event)) {
+        if (!RoleChecker.validateAdminRole(event)) {
             return;
         }
 
@@ -45,7 +45,7 @@ public class WorkerOrderCreate implements Command {
 
         var channelCategoryId = channelCategory.getId();
 
-        if (!Variables.validCategories.contains(channelCategoryId)) {
+        if (!Constants.allowedCategoryIds.contains(channelCategoryId)) {
             event.getChannel().sendMessage("The command can't be used in here.").queue(
                     message -> message.delete().queueAfter(5, TimeUnit.SECONDS)
             );
@@ -59,19 +59,19 @@ public class WorkerOrderCreate implements Command {
         var innerMessage = new StringBuilder();
         innerMessage.append("# ♡Work Order♡");
 
-        if (channelCategoryId.equals(Variables.VIP_REGULAR_CATEGORY_ID) ||
-                channelCategoryId.equals(Variables.VVIP_REGULAR_CATEGORY_ID)) {
-            innerMessage.append(" ").append(Variables.WORKERS_PING);
+        if (channelCategoryId.equals(Constants.VIP_REGULAR_CATEGORY_ID) ||
+                channelCategoryId.equals(Constants.VVIP_REGULAR_CATEGORY_ID)) {
+            innerMessage.append(" ").append(Constants.WORKERS_PING);
         }
 
         innerMessage.append("\n");
 
-        if (channelCategoryId.equals(Variables.SELLER_SEARCH_CATEGORY_ID)) {
+        if (channelCategoryId.equals(Constants.SELLER_SEARCH_CATEGORY_ID)) {
             innerMessage.append("*")
-                    .append(Variables.SELLER_SEARCH_ORDER_NAME).append("*\n");
+                    .append(Constants.SELLER_SEARCH_ORDER_NAME).append("*\n");
         } else {
             innerMessage.append("*")
-                    .append(Variables.REGULAR_ORDER_NAME).append("*\n");
+                    .append(Constants.REGULAR_ORDER_NAME).append("*\n");
         }
 
         innerMessage.append("```Order(s):\n");
@@ -94,7 +94,7 @@ public class WorkerOrderCreate implements Command {
             }
 
             var result = getProductBasicInfo(resourceCode);
-            if (result.isEmpty() && !channelCategoryId.equals(Variables.SELLER_SEARCH_CATEGORY_ID)) {
+            if (result.isEmpty() && !channelCategoryId.equals(Constants.SELLER_SEARCH_CATEGORY_ID)) {
                 event.getChannel().sendMessage("Invalid resource code.")
                         .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
                 return;
@@ -130,12 +130,12 @@ public class WorkerOrderCreate implements Command {
             return;
         }
 
-        var workerRegularCategory = event.getGuild().getCategoryById(Variables.WORKER_REGULAR_CATEGORY_ID);
-        var workerSellerSearchCategory = event.getGuild().getCategoryById(Variables.WORKER_SELLER_SEARCH_CATEGORY_ID);
+        var workerRegularCategory = event.getGuild().getCategoryById(Constants.WORKER_REGULAR_CATEGORY_ID);
+        var workerSellerSearchCategory = event.getGuild().getCategoryById(Constants.WORKER_SELLER_SEARCH_CATEGORY_ID);
 
-        if (channelCategoryId.equals(Variables.REGULAR_CATEGORY_ID) ||
-                channelCategoryId.equals(Variables.VIP_REGULAR_CATEGORY_ID) ||
-                channelCategoryId.equals(Variables.VVIP_REGULAR_CATEGORY_ID)) {
+        if (channelCategoryId.equals(Constants.REGULAR_CATEGORY_ID) ||
+                channelCategoryId.equals(Constants.VIP_REGULAR_CATEGORY_ID) ||
+                channelCategoryId.equals(Constants.VVIP_REGULAR_CATEGORY_ID)) {
             event.getGuild().createTextChannel(completedChannelName)
                     .setParent(workerRegularCategory)
                     .queue(
@@ -151,12 +151,12 @@ public class WorkerOrderCreate implements Command {
     }
 
     private boolean checkIfCategoryIsExisted(MessageReceivedEvent event, String categoryId, String channelName) {
-        var workerRegularOrders = Objects.requireNonNull(event.getGuild().getCategoryById(Variables.WORKER_REGULAR_CATEGORY_ID)).getChannels().stream().toList();
-        var workerSellerSearchOrders = Objects.requireNonNull(event.getGuild().getCategoryById(Variables.WORKER_SELLER_SEARCH_CATEGORY_ID)).getChannels().stream().toList();
+        var workerRegularOrders = Objects.requireNonNull(event.getGuild().getCategoryById(Constants.WORKER_REGULAR_CATEGORY_ID)).getChannels().stream().toList();
+        var workerSellerSearchOrders = Objects.requireNonNull(event.getGuild().getCategoryById(Constants.WORKER_SELLER_SEARCH_CATEGORY_ID)).getChannels().stream().toList();
 
-        if (categoryId.equals(Variables.REGULAR_CATEGORY_ID)
-                || categoryId.equals(Variables.VIP_REGULAR_CATEGORY_ID)
-                || categoryId.equals(Variables.VVIP_REGULAR_CATEGORY_ID)) {
+        if (categoryId.equals(Constants.REGULAR_CATEGORY_ID)
+                || categoryId.equals(Constants.VIP_REGULAR_CATEGORY_ID)
+                || categoryId.equals(Constants.VVIP_REGULAR_CATEGORY_ID)) {
             return workerRegularOrders.stream().anyMatch(channel -> channel.getName().equals(channelName));
         } else {
             return workerSellerSearchOrders.stream().anyMatch(channel -> channel.getName().equals(channelName));

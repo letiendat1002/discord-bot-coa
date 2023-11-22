@@ -11,7 +11,7 @@ public class ProductPrintAll implements Command {
     public static final String COMMAND_USAGE = "***List all products (admin)***\n> - __Usage__: `/plist`";
 
     static boolean isValidCommand(MessageReceivedEvent event, String commandUsage) {
-        if (RoleChecker.isNotAdmin(event)) {
+        if (!RoleChecker.validateAdminRole(event)) {
             return false;
         }
 

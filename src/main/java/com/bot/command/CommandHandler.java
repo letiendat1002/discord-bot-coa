@@ -1,6 +1,6 @@
 package com.bot.command;
 
-import com.bot.util.Variables;
+import com.bot.util.Constants;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class CommandHandler {
     public void handle(MessageReceivedEvent event) {
         var content = event.getMessage().getContentRaw();
         var args = content.split(" ");
-        var commandName = args[0].substring(Variables.COMMAND_PREFIX.length());
+        var commandName = args[0].substring(Constants.COMMAND_PREFIX.length());
 
         var command = commands.get(commandName);
         if (command != null) {
