@@ -17,11 +17,11 @@ public class ProductPrintAll implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (CommandPrintAll.validatePrintAllCommand(event, COMMAND_USAGE)) return;
+        if (!CommandPrintAll.validatePrintAllCommand(event, COMMAND_USAGE)) return;
 
         var productList = ProductList.getAllProducts();
         if (productList == null || productList.isEmpty()) {
-            event.getChannel().sendMessage("No products found.").queue(
+            event.getChannel().sendMessage(Constants.ERROR_PRODUCT_NOT_FOUND_MESSAGE).queue(
                     message -> message.delete().queueAfter(5, TimeUnit.SECONDS)
             );
             return;

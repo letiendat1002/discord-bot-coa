@@ -1,6 +1,7 @@
 package com.bot.command;
 
 import com.bot.product.ProductList;
+import com.bot.util.Constants;
 import com.bot.util.RoleChecker;
 import com.bot.util.CustomNumberFormat;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -48,7 +49,7 @@ public class OrderReceipt implements Command {
 
             var result = ProductList.getProductBasicInfo(resourceCode);
             if (result.isEmpty()) {
-                event.getChannel().sendMessage("Invalid resource code.")
+                event.getChannel().sendMessage(Constants.INVALID_RESOURCE_CODE_MESSAGE)
                         .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
                 return;
             }
@@ -57,7 +58,7 @@ public class OrderReceipt implements Command {
             try {
                 amount = Math.abs(Integer.parseInt(commandArgs[i + 1]));
             } catch (NumberFormatException e) {
-                event.getChannel().sendMessage("Invalid quantity. Please provide a valid number.")
+                event.getChannel().sendMessage(Constants.INVALID_AMOUNT_MESSAGE)
                         .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
                 return;
             }

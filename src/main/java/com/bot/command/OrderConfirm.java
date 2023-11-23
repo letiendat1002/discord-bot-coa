@@ -22,7 +22,7 @@ public class OrderConfirm implements Command {
 
             if (currentCategoryId == null || !Constants.allowedCategoryIds.contains(currentCategoryId)
             ) {
-                event.getChannel().sendMessage(Constants.UNALLOWED_CHANNEL_FOR_COMMAND_EXECUTION_MESSAGE).queue();
+                event.getChannel().sendMessage(Constants.DISALLOWED_CHANNEL_FOR_COMMAND_EXECUTION_MESSAGE).queue();
                 return;
             }
         }

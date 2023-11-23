@@ -7,6 +7,7 @@ import java.util.Set;
 public class Constants {
     public static final String TOKEN_PSC = "MTE3NDI2MTkxMDE0NTg2MzY4MA.GSHBPU.GOkBhWgCMulRKJQE7xQb3HVrktocuG-mwK7GW8";
     public static final String COMMAND_PREFIX = "/";
+    public static final String MULTIPLE_ORDER_CHANNEL_PREFIX = "mo-";
     public static final int MAX_MESSAGE_LENGTH = 1900;
     public static final String PENDING_STATUS = "Pending";
     public static final String ON_PROGRESS_STATUS = "On Progress";
@@ -24,10 +25,15 @@ public class Constants {
     public static final String SHOPPERS_ROLE_NAME = "Shoppers";
     public static final String WORKERS_PING = "<@&1172842755337236510>";
     public static final String STAFF_PING = "<@&1173903842795065354>";
-    public static final String UNALLOWED_COMMAND_EXECUTION_MESSAGE = "You are not allowed to use this command.";
-    public static final String UNALLOWED_CHANNEL_FOR_COMMAND_EXECUTION_MESSAGE = "The command can't be used in here.";
+    public static final String DISALLOWED_COMMAND_EXECUTION_MESSAGE = "You are not allowed to use this command.";
+    public static final String DISALLOWED_CHANNEL_FOR_COMMAND_EXECUTION_MESSAGE = "The command can't be used in here.";
+    public static final String INVALID_RESOURCE_CODE_MESSAGE = "Invalid resource code.";
+    public static final String INVALID_CHANNEL_CATEGORY_MESSAGE = "Invalid channel category.";
+    public static final String INVALID_AMOUNT_MESSAGE = "Invalid amount. Please enter a valid number.";
     public static final String ERROR_GET_MEMBER_MESSAGE = "Failed while fetching executor info, please try again...";
     public static final String ERROR_UPDATE_STATUS_MESSAGE = "Error updating status: Unexpected message format.";
+    public static final String ERROR_WORKER_CATEGORY_NOT_FOUND_MESSAGE = "Worker category not found.";
+    public static final String ERROR_PRODUCT_NOT_FOUND_MESSAGE = "Product not found.";
 
     public static final Set<String> allowedCategoryIds = new HashSet<>(List.of(
             REGULAR_CATEGORY_ID,

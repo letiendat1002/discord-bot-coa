@@ -19,7 +19,7 @@ public class RoleChecker {
         if (event.getMember().getRoles().stream().noneMatch(
                 role -> Constants.adminRoles.contains(role.getName()))) {
             event.getChannel()
-                    .sendMessage(Constants.UNALLOWED_COMMAND_EXECUTION_MESSAGE)
+                    .sendMessage(Constants.DISALLOWED_COMMAND_EXECUTION_MESSAGE)
                     .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
             return false;
         }
