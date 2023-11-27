@@ -29,12 +29,12 @@ public class ProductList {
 
             initializeProducts(ORE_TYPE,
                     new Product("Coal", "clo", 4000, ORE_TYPE),
-                    new Product("Iron Ore", "ino", 4_000, ORE_TYPE),
-                    new Product("Crimsteel Ore", "cro", 4_000, ORE_TYPE),
+                    new Product("Iron Ore", "ino", 4000, ORE_TYPE),
+                    new Product("Crimsteel Ore", "cro", 5000, ORE_TYPE),
                     new Product("Silver Ore", "sro", 4000, ORE_TYPE),
                     new Product("Gold Ore", "gdo", 4000, ORE_TYPE),
-                    new Product("Mythan Ore", "mno", 7000, ORE_TYPE),
-                    new Product("Cobalt Ore", "cto", 10_000, ORE_TYPE),
+                    new Product("Mythan Ore", "mno", 8000, ORE_TYPE),
+                    new Product("Cobalt Ore", "cto", 12_000, ORE_TYPE),
                     new Product("Varaxium Ore", "vmo", 13_000, ORE_TYPE),
                     new Product("Magic Ore", "mco", 5000, ORE_TYPE)
             );
@@ -46,11 +46,11 @@ public class ProductList {
             );
 
             initializeProducts(BAR_TYPE,
-                    new Product("Crimsteel Bars", "clb", 20_000, BAR_TYPE),
+                    new Product("Crimsteel Bars", "clb", 22_000, BAR_TYPE),
                     new Product("Silver Bars", "srb", 20_000, BAR_TYPE),
-                    new Product("Gold Bars", "gdb", 1_000_000, BAR_TYPE),
-                    new Product("Mythan Bars", "mnb", 90_000, BAR_TYPE),
-                    new Product("Cobalt Bars", "ctb", 100_000, BAR_TYPE),
+                    new Product("Gold Bars", "gdb", 1_200_000, BAR_TYPE),
+                    new Product("Mythan Bars", "mnb", 105_000, BAR_TYPE),
+                    new Product("Cobalt Bars", "ctb", 120_000, BAR_TYPE),
                     new Product("Varaxium Bars", "vmb", 140_000, BAR_TYPE),
                     new Product("Magic Bars", "mcb", 60_000, BAR_TYPE)
             );
@@ -64,7 +64,7 @@ public class ProductList {
                     new Product("Oak Logs", "okl", 7000, LOGS_TYPE),
                     new Product("Chestnut Logs", "ctl", 10_000, LOGS_TYPE),
                     new Product("Maple Logs", "mel", 10_000, LOGS_TYPE),
-                    new Product("Olive Logs", "oel", 10_000, LOGS_TYPE),
+                    new Product("Olive Logs", "oel", 12_000, LOGS_TYPE),
                     new Product("Magic Logs", "mcl", 2500, LOGS_TYPE),
                     new Product("Palm Logs", "pml", 5000, LOGS_TYPE),
                     new Product("Pear Logs", "prl", 9000, LOGS_TYPE),
@@ -78,12 +78,12 @@ public class ProductList {
                     new Product("Wealth Relics", "whr", 4000, RELICS_TYPE),
                     new Product("Power Relics", "prr", 7000, RELICS_TYPE),
                     new Product("Nature Relics", "ner", 8000, RELICS_TYPE),
-                    new Product("Fire Relics", "fer", 13_000, RELICS_TYPE),
+                    new Product("Fire Relics", "fer", 14_000, RELICS_TYPE),
                     new Product("Damage Relics", "der", 8000, RELICS_TYPE),
                     new Product("Leeching Relics", "lgr", 7000, RELICS_TYPE),
                     new Product("Ice Relics", "ier", 10_000, RELICS_TYPE),
                     new Product("Experience Relics", "eer", 12_000, RELICS_TYPE),
-                    new Product("Cursed Relics", "cdr", 6000, RELICS_TYPE),
+                    new Product("Cursed Relics", "cdr", 5000, RELICS_TYPE),
                     new Product("Efficiency Relics", "eyr", 4000, RELICS_TYPE),
                     new Product("Affliction Relics", "anr", 6000, RELICS_TYPE),
                     new Product("Tablets", "ttr", 10_000, RELICS_TYPE)
@@ -124,9 +124,9 @@ public class ProductList {
 
             initializeProducts(MONSTER_DROP_TYPE,
                     new Product("Sandstone", "sem", 10_000, MONSTER_DROP_TYPE),
-                    new Product("Magnetite", "mem", 180_000, MONSTER_DROP_TYPE),
+                    new Product("Magnetite", "mem", 200_000, MONSTER_DROP_TYPE),
                     new Product("Ruby", "rym", 60_000, MONSTER_DROP_TYPE),
-                    new Product("Arosite", "aem", 80_000, MONSTER_DROP_TYPE),
+                    new Product("Arosite", "aem", 100_000, MONSTER_DROP_TYPE),
                     new Product("Sapphire", "sam", 80_000, MONSTER_DROP_TYPE)
             );
         }
