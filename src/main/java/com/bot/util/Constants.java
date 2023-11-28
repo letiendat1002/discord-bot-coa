@@ -34,6 +34,7 @@ public class Constants {
     public static final String ERROR_UPDATE_STATUS_MESSAGE = "Error updating status: Unexpected message format.";
     public static final String ERROR_WORKER_CATEGORY_NOT_FOUND_MESSAGE = "Worker category not found.";
     public static final String ERROR_PRODUCT_NOT_FOUND_MESSAGE = "Product not found.";
+    public static final String WORKER_NOTICE_BOARD_CHANNEL_PING = "<#1174330607560568893>";
 
     public static final Set<String> allowedCategoryIds = new HashSet<>(List.of(
             REGULAR_CATEGORY_ID,

@@ -79,7 +79,9 @@ public class WorkerOrderCreate implements Command {
 
         innerMessage.append("```Order(s):\n");
 
-        if ((commandArgs.length - 1) / 2 > 1) {
+        var isMultipleOrder = (commandArgs.length - 1) / 2 > 1;
+
+        if (isMultipleOrder) {
             channelName.append(Constants.MULTIPLE_ORDER_CHANNEL_PREFIX);
         }
 
@@ -121,7 +123,17 @@ public class WorkerOrderCreate implements Command {
         channelName.append("-")
                 .append(countTag);
 
-        innerMessage.append("```");
+        innerMessage.append("```")
+                .append("\n")
+                .append(Constants.WORKERS_PING);
+        if (!isMultipleOrder) {
+            innerMessage.append(", kindly type: `Claim <amount>` *to claim an amount* that you wish to provide in the order.\n");
+        } else {
+            innerMessage.append(", kindly type: `Claim <amount> <item>` *to claim an amount* that you wish to provide in the order.\n");
+        }
+        innerMessage.append("> - Make sure to keep in mind your __***claim limits per order***__.\n> - **Read:** %s to see your claim limits per order *depending on your worker rank*."
+                .formatted(Constants.WORKER_NOTICE_BOARD_CHANNEL_PING)
+        );
 
         var completedChannelName = channelName.toString();
 
