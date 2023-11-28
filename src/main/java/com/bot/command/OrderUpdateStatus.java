@@ -20,18 +20,18 @@ public class OrderUpdateStatus implements Command {
             return;
         }
 
-        var payArgs = event.getMessage().getContentRaw().split(" ");
+        var commandArgs = event.getMessage().getContentRaw().split(" ");
 
         event.getMessage().delete().queue();
-        if (payArgs.length != 3) {
+        if (commandArgs.length != 3) {
             event.getChannel()
                     .sendMessage(COMMAND_USAGE)
                     .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
             return;
         }
 
-        var messageId = payArgs[1];
-        var argument_1 = payArgs[2];
+        var messageId = commandArgs[1];
+        var argument_1 = commandArgs[2];
 
         var currentStatus = getCurrentStatus(event, messageId);
 

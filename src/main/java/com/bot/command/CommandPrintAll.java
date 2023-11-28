@@ -14,10 +14,10 @@ public class CommandPrintAll implements Command {
             return false;
         }
 
-        var payArgs = event.getMessage().getContentRaw().split(" ");
+        var commandArgs = event.getMessage().getContentRaw().split(" ");
 
         event.getMessage().delete().queue();
-        if (payArgs.length != 1) {
+        if (commandArgs.length != 1) {
             event.getChannel()
                     .sendMessage(commandUsage2)
                     .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
