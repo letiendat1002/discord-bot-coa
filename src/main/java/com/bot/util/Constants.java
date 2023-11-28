@@ -25,6 +25,7 @@ public class Constants {
     public static final String SHOPPERS_ROLE_NAME = "Shoppers";
     public static final String WORKERS_PING = "<@&1172842755337236510>";
     public static final String STAFF_PING = "<@&1173903842795065354>";
+    public static final String BANKER_PING = "<@&1174233159253102642>";
     public static final String DISALLOWED_COMMAND_EXECUTION_MESSAGE = "You are not allowed to use this command.";
     public static final String DISALLOWED_CHANNEL_FOR_COMMAND_EXECUTION_MESSAGE = "The command can't be used in here.";
     public static final String INVALID_RESOURCE_CODE_MESSAGE = "Invalid resource code.";

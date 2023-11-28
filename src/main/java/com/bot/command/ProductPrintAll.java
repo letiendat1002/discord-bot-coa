@@ -17,7 +17,7 @@ public class ProductPrintAll implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (!CommandPrintAll.validatePrintAllCommand(event, COMMAND_USAGE)) return;
+        if (CommandPrintAll.isNotValidPrintAllCommand(event, COMMAND_USAGE)) return;
 
         var productList = ProductList.getAllProducts();
         if (productList == null || productList.isEmpty()) {

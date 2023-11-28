@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.bot.util.RoleChecker.isShopper;
+import static com.bot.util.ValidateHelper.isShopper;
 
 public class OrderConfirm implements Command {
     public static final String COMMAND_USAGE = "***Order Confirm***\n> - __Usage__: `/confirm`";

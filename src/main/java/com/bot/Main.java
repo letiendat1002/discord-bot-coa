@@ -17,6 +17,7 @@ public class Main extends ListenerAdapter {
         commandHandler.registerCommand(new ProductPrintAll());
         commandHandler.registerCommand(new CommandPrintAll());
         commandHandler.registerCommand(new WorkerOrderCreate());
+        commandHandler.registerCommand(new OrderPickup());
     }
 
     public static void main(String[] args) {

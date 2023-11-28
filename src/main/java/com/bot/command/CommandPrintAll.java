@@ -1,7 +1,7 @@
 package com.bot.command;
 
 import com.bot.util.Constants;
-import com.bot.util.RoleChecker;
+import com.bot.util.ValidateHelper;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.concurrent.TimeUnit;
@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit;
 public class CommandPrintAll implements Command {
     public static final String COMMAND_USAGE = "***List all Phoenix's commands (admin)***\n> - __Usage__: `/clist`";
 
-    static boolean validatePrintAllCommand(MessageReceivedEvent event, String commandUsage2) {
-        if (!RoleChecker.validateAdminRole(event)) {
-            return false;
+    static boolean isNotValidPrintAllCommand(MessageReceivedEvent event, String commandUsage2) {
+        if (ValidateHelper.validateNotAdminRole(event)) {
+            return true;
         }
 
         var commandArgs = event.getMessage().getContentRaw().split(" ");
@@ -21,9 +21,9 @@ public class CommandPrintAll implements Command {
             event.getChannel()
                     .sendMessage(commandUsage2)
                     .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class CommandPrintAll implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (!validatePrintAllCommand(event, COMMAND_USAGE)) return;
+        if (isNotValidPrintAllCommand(event, COMMAND_USAGE)) return;
 
         var commands = CommandList.VALID_COMMANDS;
         var commandUsage = CommandList.COMMAND_USAGE;

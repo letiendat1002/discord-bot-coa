@@ -1,12 +1,13 @@
 package com.bot.command;
 
 import com.bot.util.Constants;
-import com.bot.util.RoleChecker;
+import com.bot.util.ValidateHelper;
 import net.dv8tion.jda.api.entities.channel.concrete.Category;
 import net.dv8tion.jda.api.entities.channel.middleman.GuildChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +23,7 @@ public class WorkerOrderCreate implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (!RoleChecker.validateAdminRole(event)) {
+        if (ValidateHelper.validateNotAdminRole(event)) {
             return;
         }
 
@@ -36,24 +37,12 @@ public class WorkerOrderCreate implements Command {
             return;
         }
 
+        if (ValidateHelper.isCommandNotExecutedInAllowedCategory(event)) {
+            return;
+        }
         var currentChannel = event.getChannel().asTextChannel();
         var channelCategory = currentChannel.getParentCategory();
-
-        if (channelCategory == null) {
-            event.getChannel().sendMessage(Constants.INVALID_CHANNEL_CATEGORY_MESSAGE).queue(
-                    message -> message.delete().queueAfter(5, TimeUnit.SECONDS)
-            );
-            return;
-        }
-
-        var channelCategoryId = channelCategory.getId();
-
-        if (!Constants.allowedCategoryIds.contains(channelCategoryId)) {
-            event.getChannel().sendMessage(Constants.DISALLOWED_CHANNEL_FOR_COMMAND_EXECUTION_MESSAGE).queue(
-                    message -> message.delete().queueAfter(5, TimeUnit.SECONDS)
-            );
-            return;
-        }
+        var channelCategoryId = Objects.requireNonNull(channelCategory).getId();
 
         var commandExecutedChannelName = currentChannel.getName();
         var countTag = commandExecutedChannelName.substring(commandExecutedChannelName.lastIndexOf("-") + 1);

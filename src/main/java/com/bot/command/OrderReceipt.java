@@ -2,7 +2,7 @@ package com.bot.command;
 
 import com.bot.product.ProductList;
 import com.bot.util.Constants;
-import com.bot.util.RoleChecker;
+import com.bot.util.ValidateHelper;
 import com.bot.util.CustomNumberFormat;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -20,7 +20,7 @@ public class OrderReceipt implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (!RoleChecker.validateAdminRole(event)) {
+        if (ValidateHelper.validateNotAdminRole(event)) {
             return;
         }
 

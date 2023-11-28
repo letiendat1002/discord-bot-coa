@@ -1,30 +1,29 @@
 package com.bot.command;
 
 import com.bot.util.Constants;
-import com.bot.util.RoleChecker;
+import com.bot.util.ValidateHelper;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.bot.util.RoleChecker.isShopper;
-
 public class OrderPickup implements Command {
-    public static final String COMMAND_USAGE = "***Order Pickup***\n> - __Usage__: `/pickup <@user>`";
+    public static final String COMMAND_USAGE = "***Order Pickup***\n> - __Usage__: `/opickup <@user>`";
 
     @Override
     public String getName() {
-        return "confirm";
+        return "opickup";
     }
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (!RoleChecker.validateAdminRole(event)) {
+        if (ValidateHelper.validateNotAdminRole(event)) {
             return;
         }
 
         var commandArgs = event.getMessage().getContentRaw().split(" ");
 
-        if (commandArgs.length != 1) {
+        event.getMessage().delete().queue();
+        if (commandArgs.length != 2) {
             event.getMessage().delete().queue();
             event.getChannel()
                     .sendMessage(COMMAND_USAGE)
@@ -32,19 +31,17 @@ public class OrderPickup implements Command {
             return;
         }
 
+        if (ValidateHelper.isCommandNotExecutedInAllowedCategory(event)) {
+            return;
+        }
+        var mention = commandArgs[1];
 
-        var confirmMessage_1 = String.format("# ♡Order Confirmed♡ %s\nThank you for your confirmation %s, your order is now added to the Order Queue List.\nWe will contact you again once your order is ready for pickup. ♡⁠(⁠Ӧ⁠ｖ⁠Ӧ⁠｡⁠)\n",
-                Constants.STAFF_PING, event.getAuthor().getAsMention());
+        var pickupMessage = "# ♡<:gift:1178648532039778395> Ready For PickUp <:gift:1178648532039778395>♡\n" +
+                "Good day " + mention + ", your order is now **ready for pick up**! " +
+                "Kindly `ping` " + Constants.BANKER_PING + " together with `your in-game name (IGN)` once you are ready to pick up your order. " +
+                "Thank you for your support in **Phoenix Center** and have a nice day! <:pepe_heart:1176230584775884800>";
 
-        var confirmMessage_2 = """
-                ```
-                STATUS: [Pending]
-                ```
-                """;
+        event.getChannel().sendMessage(pickupMessage).queue();
 
-        event.getChannel().sendMessage(confirmMessage_1).queue();
-        event.getChannel().sendMessage(confirmMessage_2).queue(
-                message -> message.pin().queue()
-        );
     }
 }

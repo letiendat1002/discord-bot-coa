@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CommandList {
     public static final List<String> VALID_COMMANDS = List.of(
-            "clist", "plist", "receipt", "confirm", "ustatus", "worker-order"
+            "clist", "plist", "receipt", "confirm", "ustatus", "worker-order", "opickup"
     );
 
     public static final Map<String, String> COMMAND_USAGE = Map.of(
@@ -14,6 +14,7 @@ public class CommandList {
             "receipt", OrderReceipt.COMMAND_USAGE,
             "confirm", OrderConfirm.COMMAND_USAGE,
             "ustatus", OrderUpdateStatus.COMMAND_USAGE,
-            "worker-order", WorkerOrderCreate.COMMAND_USAGE
+            "worker-order", WorkerOrderCreate.COMMAND_USAGE,
+            "opickup", OrderPickup.COMMAND_USAGE
     );
 }
