@@ -37,8 +37,8 @@ public class OrderConfirm implements Command {
             return;
         }
 
-        var confirmMessage_1 = String.format("# ♡Order Confirmed♡ %s\nThank you for your confirmation %s, your order is now added to the Order Queue List.\nWe will contact you again once your order is ready for pickup. ♡⁠(⁠Ӧ⁠ｖ⁠Ӧ⁠｡⁠)\n",
-                Constants.STAFF_PING, event.getAuthor().getAsMention());
+        var confirmMessage_1 = String.format("# ♡Order Confirmed♡\nThank you for your confirmation %s, your order is now added to the Order Queue List.\nWe will contact you again once your order is ready for pickup. ♡⁠(⁠Ӧ⁠ｖ⁠Ӧ⁠｡⁠) %s\n",
+                event.getAuthor().getAsMention(), Constants.STAFF_PING);
 
         var confirmMessage_2 = """
                 ```
