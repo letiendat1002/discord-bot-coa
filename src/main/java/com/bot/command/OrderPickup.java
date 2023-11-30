@@ -36,9 +36,9 @@ public class OrderPickup implements Command {
         }
         var mention = commandArgs[1];
 
-        var pickupMessage = "# ♡<:gift:1178648532039778395> Ready For PickUp <:gift:1178648532039778395>♡\n" +
+        var pickupMessage = "# ♡<:gift:1178648532039778395>Ready For PickUp<:gift:1178648532039778395>♡\n" +
                 "Good day " + mention + ", your order is now **ready for pick up**! " +
-                "Kindly `ping` " + Constants.BANKER_PING + " together with `your in-game name (IGN)` once you are ready to pick up your order. " +
+                "Kindly `ping` " + Constants.BANKER_PING + " together with `your in-game name(IGN)` once you are ready to pick up your order. " +
                 "Thank you for your support in **Phoenix Center** and have a nice day! <:pepe_heart:1176230584775884800>";
 
         event.getChannel().sendMessage(pickupMessage).queue();
