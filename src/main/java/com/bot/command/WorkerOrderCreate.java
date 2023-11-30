@@ -17,7 +17,7 @@ import static com.bot.product.ProductList.getProductBasicInfo;
 
 public class WorkerOrderCreate implements Command {
     public static final String COMMAND_USAGE = "***Worker Order Create (admin)***\n> - __Usage__: `/worker-order <item_1> <amount_1> [<item_2> <amount_2> ...]`";
-    private static final long COOLDOWN_DURATION = 40 * 1000;
+    private static final long COOLDOWN_DURATION = 15 * 60 * 1000;
     private static final List<PendingOrder> orderQueue = new ArrayList<>();
     private static String lastOrderCategoryId = "";
     private static long lastCommandExecutedTime = 0;
@@ -30,7 +30,8 @@ public class WorkerOrderCreate implements Command {
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        if (ValidateHelper.validateNotAdminRole(event)) {
+        if (ValidateHelper.validateNotAdminRole(event) ||
+                ValidateHelper.isCommandNotExecutedInAllowedCategory(event)) {
             return;
         }
 
@@ -42,9 +43,6 @@ public class WorkerOrderCreate implements Command {
             return;
         }
 
-        if (ValidateHelper.isCommandNotExecutedInAllowedCategory(event)) {
-            return;
-        }
         var currentChannel = event.getChannel().asTextChannel();
         var channelCategory = currentChannel.getParentCategory();
         var channelCategoryId = Objects.requireNonNull(channelCategory).getId();
@@ -270,7 +268,7 @@ public class WorkerOrderCreate implements Command {
                     }
                 }
             }
-        }, 0, 1, TimeUnit.SECONDS);
+        }, 0, 5, TimeUnit.MINUTES);
     }
 
     private boolean requiresCooldown(String channelCategoryId) {
