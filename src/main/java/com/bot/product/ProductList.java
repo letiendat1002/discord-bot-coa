@@ -34,7 +34,7 @@ public class ProductList {
                     new Product("Silver Ore", "sro", 4000, ORE_TYPE),
                     new Product("Gold Ore", "gdo", 4000, ORE_TYPE),
                     new Product("Mythan Ore", "mno", 8000, ORE_TYPE),
-                    new Product("Cobalt Ore", "cto", 12_000, ORE_TYPE),
+                    new Product("Cobalt Ore", "cto", 11_000, ORE_TYPE),
                     new Product("Varaxium Ore", "vmo", 13_000, ORE_TYPE),
                     new Product("Magic Ore", "mco", 5000, ORE_TYPE)
             );
@@ -50,7 +50,7 @@ public class ProductList {
                     new Product("Silver Bars", "srb", 20_000, BAR_TYPE),
                     new Product("Gold Bars", "gdb", 1_500_000, BAR_TYPE),
                     new Product("Mythan Bars", "mnb", 105_000, BAR_TYPE),
-                    new Product("Cobalt Bars", "ctb", 120_000, BAR_TYPE),
+                    new Product("Cobalt Bars", "ctb", 110_000, BAR_TYPE),
                     new Product("Varaxium Bars", "vmb", 140_000, BAR_TYPE),
                     new Product("Magic Bars", "mcb", 60_000, BAR_TYPE)
             );
