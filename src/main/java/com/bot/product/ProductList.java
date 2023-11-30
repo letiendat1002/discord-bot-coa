@@ -48,7 +48,7 @@ public class ProductList {
             initializeProducts(BAR_TYPE,
                     new Product("Crimsteel Bars", "clb", 22_000, BAR_TYPE),
                     new Product("Silver Bars", "srb", 20_000, BAR_TYPE),
-                    new Product("Gold Bars", "gdb", 1_200_000, BAR_TYPE),
+                    new Product("Gold Bars", "gdb", 1_500_000, BAR_TYPE),
                     new Product("Mythan Bars", "mnb", 105_000, BAR_TYPE),
                     new Product("Cobalt Bars", "ctb", 120_000, BAR_TYPE),
                     new Product("Varaxium Bars", "vmb", 140_000, BAR_TYPE),
