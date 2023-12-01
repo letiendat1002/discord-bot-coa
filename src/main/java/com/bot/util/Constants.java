@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 public class Constants {
-    public static final String TOKEN_PSC = "MTE3NDI2MTkxMDE0NTg2MzY4MA.GSHBPU.GOkBhWgCMulRKJQE7xQb3HVrktocuG-mwK7GW8";
     public static final String COMMAND_PREFIX = "/";
     public static final String MULTIPLE_ORDER_CHANNEL_PREFIX = "mo-";
     public static final int MAX_MESSAGE_LENGTH = 1900;

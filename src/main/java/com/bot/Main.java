@@ -6,8 +6,13 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Properties;
 
 public class Main extends ListenerAdapter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
     private final CommandHandler commandHandler = new CommandHandler();
 
     public Main() {
@@ -21,11 +26,31 @@ public class Main extends ListenerAdapter {
     }
 
     public static void main(String[] args) {
+        var props = loadProperties();
+
+        if (props == null) {
+            LOGGER.error("Failed to load properties");
+            return;
+        }
+
         var jda = JDABuilder
-                .createDefault(Constants.TOKEN_PSC)
+                .createDefault(props.getProperty("DISCORD_TOKEN"))
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .build();
         jda.addEventListener(new Main());
+    }
+
+    private static Properties loadProperties() {
+        try (var input = Main.class.getClassLoader().getResourceAsStream("application.properties")) {
+            Properties prop = new Properties();
+            if (input == null) {
+                return null;
+            }
+            prop.load(input);
+            return prop;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override
