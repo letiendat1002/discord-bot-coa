@@ -78,7 +78,7 @@ public class ProductList {
                     new Product("Wealth Relics", "whr", 4000, RELICS_TYPE),
                     new Product("Power Relics", "prr", 7000, RELICS_TYPE),
                     new Product("Nature Relics", "ner", 8000, RELICS_TYPE),
-                    new Product("Fire Relics", "fer", 14_000, RELICS_TYPE),
+                    new Product("Fire Relics", "fer", 12_000, RELICS_TYPE),
                     new Product("Damage Relics", "der", 8000, RELICS_TYPE),
                     new Product("Leeching Relics", "lgr", 7000, RELICS_TYPE),
                     new Product("Ice Relics", "ier", 10_000, RELICS_TYPE),
