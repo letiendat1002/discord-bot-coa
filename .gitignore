@@ -3,6 +3,8 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 **/main/resources/application.properties
+/assets/*.mwb
+/assets/*.mwb.bak
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
