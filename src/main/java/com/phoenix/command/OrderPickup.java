@@ -1,10 +1,9 @@
-package com.bot.command;
+package com.phoenix.command;
 
-import com.bot.util.Constants;
-import com.bot.util.ValidateHelper;
+import com.phoenix.util.Constants;
+import com.phoenix.util.ErrorHandler;
+import com.phoenix.util.ValidateHelper;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-
-import java.util.concurrent.TimeUnit;
 
 public class OrderPickup implements Command {
     public static final String COMMAND_USAGE = "***Order Pickup***\n> - __Usage__: `/opickup <@user>`";
@@ -25,9 +24,7 @@ public class OrderPickup implements Command {
         event.getMessage().delete().queue();
         if (commandArgs.length != 2) {
             event.getMessage().delete().queue();
-            event.getChannel()
-                    .sendMessage(COMMAND_USAGE)
-                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+            ErrorHandler.sendErrorMessage(event.getChannel(), COMMAND_USAGE);
             return;
         }
 

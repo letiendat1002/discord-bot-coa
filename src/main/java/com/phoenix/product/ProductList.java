@@ -1,4 +1,4 @@
-package com.bot.product;
+package com.phoenix.product;
 
 import java.util.*;
 

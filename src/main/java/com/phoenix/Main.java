@@ -1,7 +1,8 @@
-package com.bot;
+package com.phoenix;
 
-import com.bot.command.*;
-import com.bot.util.Constants;
+import com.phoenix.command.*;
+import com.phoenix.util.Constants;
+import com.phoenix.util.PropertyLoader;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -9,10 +10,12 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Properties;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class Main extends ListenerAdapter {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    private static final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
     private final CommandHandler commandHandler = new CommandHandler();
 
     public Main() {
@@ -26,31 +29,13 @@ public class Main extends ListenerAdapter {
     }
 
     public static void main(String[] args) {
-        var props = loadProperties();
-
-        if (props == null) {
-            LOGGER.error("Failed to load properties");
-            return;
-        }
-
-        var jda = JDABuilder
-                .createDefault(props.getProperty("DISCORD_TOKEN"))
-                .enableIntents(GatewayIntent.MESSAGE_CONTENT)
-                .build();
-        jda.addEventListener(new Main());
-    }
-
-    private static Properties loadProperties() {
-        try (var input = Main.class.getClassLoader().getResourceAsStream("application.properties")) {
-            Properties prop = new Properties();
-            if (input == null) {
-                return null;
-            }
-            prop.load(input);
-            return prop;
-        } catch (Exception e) {
-            return null;
-        }
+        PropertyLoader.loadProperties().ifPresentOrElse(props -> {
+            var jda = JDABuilder
+                    .createDefault(props.getProperty("DISCORD_TOKEN"))
+                    .enableIntents(GatewayIntent.MESSAGE_CONTENT)
+                    .build();
+            jda.addEventListener(new Main());
+        }, () -> LOGGER.error("Failed to load properties"));
     }
 
     @Override
@@ -68,5 +53,9 @@ public class Main extends ListenerAdapter {
                 }
             }
         }
+    }
+
+    public static ScheduledExecutorService getExecutorService() {
+        return executorService;
     }
 }

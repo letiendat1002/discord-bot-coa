@@ -1,4 +1,4 @@
-package com.bot.util;
+package com.phoenix.util;
 
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +11,7 @@ public class Constants {
     public static final String PENDING_STATUS = "Pending";
     public static final String ON_PROGRESS_STATUS = "On Progress";
     public static final String COMPLETED_STATUS = "Completed";
-    public static final String UNKNOWN_STATUS = "Unknown";
+    public static final String UNKNOWN = "Unknown";
     public static final String REGULAR_CATEGORY_ID = "1173921114183962684";
     public static final String VIP_REGULAR_CATEGORY_ID = "1174751714843299850";
     public static final String VVIP_REGULAR_CATEGORY_ID = "1174751859253182474";
@@ -37,6 +37,7 @@ public class Constants {
     public static final String ERROR_WORKER_ORDER_EXISTS_MESSAGE = "Worker order is already in progress or waiting in the queue.";
     public static final String WORKER_NOTICE_BOARD_CHANNEL_PING = "<#1174330607560568893>";
     public static final String WORKERS_NOTIFIED_MESSAGE = "✅ Workers have been notified";
+    public static final String ERROR_OCCURRED = "ERROR_OCCURRED";
 
     public static final Set<String> allowedCategoryIds = new HashSet<>(List.of(
             REGULAR_CATEGORY_ID,

@@ -1,4 +1,4 @@
-package com.bot.util;
+package com.phoenix.util;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 

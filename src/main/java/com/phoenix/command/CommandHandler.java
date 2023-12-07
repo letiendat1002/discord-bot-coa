@@ -1,6 +1,6 @@
-package com.bot.command;
+package com.phoenix.command;
 
-import com.bot.util.Constants;
+import com.phoenix.util.Constants;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.HashMap;

@@ -18,7 +18,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.bot.Main</mainClass>
+                  <mainClass>com.phoenix.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>

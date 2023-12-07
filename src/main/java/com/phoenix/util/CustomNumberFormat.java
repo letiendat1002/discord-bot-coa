@@ -1,4 +1,4 @@
-package com.bot.util;
+package com.phoenix.util;
 
 import java.text.DecimalFormat;
 

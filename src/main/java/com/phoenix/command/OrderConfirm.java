@@ -1,11 +1,10 @@
-package com.bot.command;
+package com.phoenix.command;
 
-import com.bot.util.Constants;
+import com.phoenix.util.Constants;
+import com.phoenix.util.ErrorHandler;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-import java.util.concurrent.TimeUnit;
-
-import static com.bot.util.ValidateHelper.isShopper;
+import static com.phoenix.util.ValidateHelper.isShopper;
 
 public class OrderConfirm implements Command {
     public static final String COMMAND_USAGE = "***Order Confirm***\n> - __Usage__: `/confirm`";
@@ -31,9 +30,7 @@ public class OrderConfirm implements Command {
 
         if (commandArgs.length != 1) {
             event.getMessage().delete().queue();
-            event.getChannel()
-                    .sendMessage(COMMAND_USAGE)
-                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+            ErrorHandler.sendErrorMessage(event.getChannel(), COMMAND_USAGE);
             return;
         }
 

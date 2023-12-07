@@ -1,14 +1,13 @@
-package com.bot.command;
+package com.phoenix.command;
 
-import com.bot.product.ProductList;
-import com.bot.util.Constants;
-import com.bot.util.ValidateHelper;
-import com.bot.util.CustomNumberFormat;
+import com.phoenix.product.ProductList;
+import com.phoenix.util.Constants;
+import com.phoenix.util.CustomNumberFormat;
+import com.phoenix.util.ErrorHandler;
+import com.phoenix.util.ValidateHelper;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-import java.util.concurrent.TimeUnit;
-
-import static com.bot.util.CustomNumberFormat.shortenValue;
+import static com.phoenix.util.CustomNumberFormat.shortenValue;
 
 public class OrderReceipt implements Command {
     public static final String COMMAND_USAGE = "***Order Receipt (admin)***\n> - __Usage__: `/receipt <@customer> <item_1> <amount_1> [<item_2> <amount_2> ...]`";
@@ -28,9 +27,7 @@ public class OrderReceipt implements Command {
 
         event.getMessage().delete().queue();
         if (commandArgs.length < 4 || commandArgs.length % 2 != 0) {
-            event.getChannel()
-                    .sendMessage(COMMAND_USAGE)
-                    .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+            ErrorHandler.sendErrorMessage(event.getChannel(), COMMAND_USAGE);
             return;
         }
 
@@ -49,8 +46,10 @@ public class OrderReceipt implements Command {
 
             var result = ProductList.getProductBasicInfo(resourceCode);
             if (result.isEmpty()) {
-                event.getChannel().sendMessage(Constants.INVALID_RESOURCE_CODE_MESSAGE)
-                        .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+                ErrorHandler.sendErrorMessage(
+                        event.getChannel(),
+                        Constants.INVALID_RESOURCE_CODE_MESSAGE
+                );
                 return;
             }
             var productInfo = result.get();
@@ -58,8 +57,7 @@ public class OrderReceipt implements Command {
             try {
                 amount = Math.abs(Integer.parseInt(commandArgs[i + 1]));
             } catch (NumberFormatException e) {
-                event.getChannel().sendMessage(Constants.INVALID_AMOUNT_MESSAGE)
-                        .queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+                ErrorHandler.sendErrorMessage(event.getChannel(), Constants.INVALID_AMOUNT_MESSAGE);
                 return;
             }
 

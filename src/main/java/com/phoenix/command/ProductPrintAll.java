@@ -1,8 +1,8 @@
-package com.bot.command;
+package com.phoenix.command;
 
-import com.bot.product.ProductList;
-import com.bot.util.Constants;
-import com.bot.util.CustomNumberFormat;
+import com.phoenix.product.ProductList;
+import com.phoenix.util.Constants;
+import com.phoenix.util.CustomNumberFormat;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.concurrent.TimeUnit;
