@@ -7,11 +7,12 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import static com.phoenix.util.ValidateHelper.isShopper;
 
 public class OrderConfirm implements Command {
+    public static final String COMMAND_NAME = "confirm";
     public static final String COMMAND_USAGE = "***Order Confirm***\n> - __Usage__: `/confirm`";
 
     @Override
     public String getName() {
-        return "confirm";
+        return COMMAND_NAME;
     }
 
     @Override

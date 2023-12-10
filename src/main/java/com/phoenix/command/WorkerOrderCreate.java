@@ -17,7 +17,8 @@ import static com.phoenix.product.ProductList.getProductBasicInfo;
 import static com.phoenix.util.ErrorHandler.sendErrorMessage;
 
 public class WorkerOrderCreate implements Command {
-    public static final String COMMAND_USAGE = "***Worker Order Create (admin)***\n> - __Usage__: `/worker-order <item_1> <amount_1> [<item_2> <amount_2> ...]`";
+    public static final String COMMAND_NAME = "worder";
+    public static final String COMMAND_USAGE = "***Worker Order Create (admin)***\n> - __Usage__: `/worder <item_1> <amount_1> [<item_2> <amount_2> ...]`";
     private static final long COOLDOWN_DURATION = TimeUnit.MINUTES.toMillis(15);
     private static final List<PendingOrder> orderQueue = new ArrayList<>();
     private static String lastOrderCategoryId = "";
@@ -84,7 +85,7 @@ public class WorkerOrderCreate implements Command {
 
     @Override
     public String getName() {
-        return "worker-order";
+        return COMMAND_NAME;
     }
 
     @Override

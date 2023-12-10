@@ -5,16 +5,22 @@ import java.util.Map;
 
 public class CommandList {
     public static final List<String> VALID_COMMANDS = List.of(
-            "clist", "plist", "receipt", "confirm", "ustatus", "worker-order", "opickup"
+            CommandPrintAll.COMMAND_NAME,
+            ProductPrintAll.COMMAND_NAME,
+            OrderReceipt.COMMAND_NAME,
+            OrderConfirm.COMMAND_NAME,
+            OrderUpdateStatus.COMMAND_NAME,
+            WorkerOrderCreate.COMMAND_NAME,
+            OrderPickup.COMMAND_NAME
     );
 
     public static final Map<String, String> COMMAND_USAGE = Map.of(
-            "clist", CommandPrintAll.COMMAND_USAGE,
-            "plist", ProductPrintAll.COMMAND_USAGE,
-            "receipt", OrderReceipt.COMMAND_USAGE,
-            "confirm", OrderConfirm.COMMAND_USAGE,
-            "ustatus", OrderUpdateStatus.COMMAND_USAGE,
-            "worker-order", WorkerOrderCreate.COMMAND_USAGE,
-            "opickup", OrderPickup.COMMAND_USAGE
+            CommandPrintAll.COMMAND_NAME, CommandPrintAll.COMMAND_USAGE,
+            ProductPrintAll.COMMAND_NAME, ProductPrintAll.COMMAND_USAGE,
+            OrderReceipt.COMMAND_NAME, OrderReceipt.COMMAND_USAGE,
+            OrderConfirm.COMMAND_NAME, OrderConfirm.COMMAND_USAGE,
+            OrderUpdateStatus.COMMAND_NAME, OrderUpdateStatus.COMMAND_USAGE,
+            WorkerOrderCreate.COMMAND_NAME, WorkerOrderCreate.COMMAND_USAGE,
+            OrderPickup.COMMAND_NAME, OrderPickup.COMMAND_USAGE
     );
 }

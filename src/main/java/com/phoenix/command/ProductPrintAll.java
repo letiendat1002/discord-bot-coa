@@ -8,11 +8,12 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.concurrent.TimeUnit;
 
 public class ProductPrintAll implements Command {
+    public static final String COMMAND_NAME = "plist";
     public static final String COMMAND_USAGE = "***List all products (admin)***\n> - __Usage__: `/plist`";
 
     @Override
     public String getName() {
-        return "plist";
+        return COMMAND_NAME;
     }
 
     @Override

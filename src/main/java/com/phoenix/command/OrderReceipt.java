@@ -10,11 +10,12 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import static com.phoenix.util.CustomNumberFormat.shortenValue;
 
 public class OrderReceipt implements Command {
+    public static final String COMMAND_NAME = "receipt";
     public static final String COMMAND_USAGE = "***Order Receipt (admin)***\n> - __Usage__: `/receipt <@customer> <item_1> <amount_1> [<item_2> <amount_2> ...]`";
 
     @Override
     public String getName() {
-        return "receipt";
+        return COMMAND_NAME;
     }
 
     @Override

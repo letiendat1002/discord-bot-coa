@@ -6,11 +6,12 @@ import com.phoenix.util.ValidateHelper;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class OrderPickup implements Command {
+    public static final String COMMAND_NAME = "opickup";
     public static final String COMMAND_USAGE = "***Order Pickup***\n> - __Usage__: `/opickup <@user>`";
 
     @Override
     public String getName() {
-        return "opickup";
+        return COMMAND_NAME;
     }
 
     @Override

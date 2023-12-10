@@ -6,6 +6,7 @@ import com.phoenix.util.ValidateHelper;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class CommandPrintAll implements Command {
+    public static final String COMMAND_NAME = "clist";
     public static final String COMMAND_USAGE = "***List all Phoenix's commands (admin)***\n> - __Usage__: `/clist`";
 
     static boolean isNotValidPrintAllCommand(MessageReceivedEvent event, String commandUsage) {
@@ -25,7 +26,7 @@ public class CommandPrintAll implements Command {
 
     @Override
     public String getName() {
-        return "clist";
+        return COMMAND_NAME;
     }
 
     @Override

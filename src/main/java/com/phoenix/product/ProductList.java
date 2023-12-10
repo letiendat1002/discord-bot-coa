@@ -13,6 +13,7 @@ public class ProductList {
     private static final String FISHING_TYPE = ProductType.FISHING.name();
     private static final String COOKED_FISH_TYPE = ProductType.COOKED_FISH.name();
     private static final String MONSTER_DROP_TYPE = ProductType.MONSTER_DROP.name();
+    private static final String MISCELLANEOUS_TYPE = ProductType.MISCELLANEOUS.name();
     private static final Set<String> PRODUCT_CODES = new HashSet<>();
     private static List<Product> productList;
 
@@ -129,6 +130,10 @@ public class ProductList {
                     new Product("Arosite", "aem", 100_000, MONSTER_DROP_TYPE),
                     new Product("Sapphire", "sam", 80_000, MONSTER_DROP_TYPE)
             );
+
+            initializeProducts(MISCELLANEOUS_TYPE,
+                    new Product("Glass", "gsm", 100_000, MISCELLANEOUS_TYPE)
+            );
         }
     }
 
@@ -168,11 +173,11 @@ public class ProductList {
     }
 
     public enum ProductType {
-        ORE, SALT, BARS, LOGS, RELICS, TAILORING, BAITS, FISHING, COOKED_FISH, MONSTER_DROP
+        ORE, SALT, BARS, LOGS, RELICS, TAILORING, BAITS, FISHING, COOKED_FISH, MONSTER_DROP, MISCELLANEOUS
     }
 
     public record ProductBasicInfo(String resourceName, int unit) {
-        public ProductBasicInfo{
+        public ProductBasicInfo {
             if (unit < 0) {
                 throw new IllegalArgumentException("Unit cannot be negative");
             }
