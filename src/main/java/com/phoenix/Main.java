@@ -28,7 +28,7 @@ public class Main extends ListenerAdapter {
     public Main() {
         commandHandler.registerCommand(new OrderReceipt());
         commandHandler.registerCommand(new OrderConfirm());
-        commandHandler.registerCommand(new OrderUpdateStatus());
+//        commandHandler.registerCommand(new OrderUpdateStatus());
         commandHandler.registerCommand(new ProductPrintAll());
         commandHandler.registerCommand(new CommandPrintAll());
         commandHandler.registerCommand(new WorkerOrderCreate());

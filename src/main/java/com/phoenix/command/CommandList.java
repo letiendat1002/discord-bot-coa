@@ -9,7 +9,7 @@ public class CommandList {
             ProductPrintAll.COMMAND_NAME,
             OrderReceipt.COMMAND_NAME,
             OrderConfirm.COMMAND_NAME,
-            OrderUpdateStatus.COMMAND_NAME,
+//            OrderUpdateStatus.COMMAND_NAME,
             WorkerOrderCreate.COMMAND_NAME,
             OrderPickup.COMMAND_NAME
     );
@@ -19,7 +19,7 @@ public class CommandList {
             ProductPrintAll.COMMAND_NAME, ProductPrintAll.COMMAND_USAGE,
             OrderReceipt.COMMAND_NAME, OrderReceipt.COMMAND_USAGE,
             OrderConfirm.COMMAND_NAME, OrderConfirm.COMMAND_USAGE,
-            OrderUpdateStatus.COMMAND_NAME, OrderUpdateStatus.COMMAND_USAGE,
+//            OrderUpdateStatus.COMMAND_NAME, OrderUpdateStatus.COMMAND_USAGE,
             WorkerOrderCreate.COMMAND_NAME, WorkerOrderCreate.COMMAND_USAGE,
             OrderPickup.COMMAND_NAME, OrderPickup.COMMAND_USAGE
     );

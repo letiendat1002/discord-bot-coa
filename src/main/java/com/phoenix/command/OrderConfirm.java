@@ -35,18 +35,9 @@ public class OrderConfirm implements Command {
             return;
         }
 
-        var confirmMessage_1 = String.format("# ♡Order Confirmed♡\nThank you for your confirmation %s, your order is now added to the Order Queue List.\nWe will contact you again once your order is ready for pickup. ♡⁠(⁠Ӧ⁠ｖ⁠Ӧ⁠｡⁠) %s\n",
+        var confirmMessage = String.format("# ♡Order Confirmed♡\nThank you for your confirmation %s, your order is now added to the Order Queue List.\nWe will contact you again once your order is ready for pickup. ♡⁠(⁠Ӧ⁠ｖ⁠Ӧ⁠｡⁠) %s\n",
                 event.getAuthor().getAsMention(), Constants.STAFF_PING);
 
-        var confirmMessage_2 = """
-                ```
-                STATUS: [Pending]
-                ```
-                """;
-
-        event.getChannel().sendMessage(confirmMessage_1).queue();
-        event.getChannel().sendMessage(confirmMessage_2).queue(
-                message -> message.pin().queue()
-        );
+        event.getChannel().sendMessage(confirmMessage).queue();
     }
 }
